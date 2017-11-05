@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Calender Mapping</title>
+
+<style>
+#map{
+height:600px;
+width: 70%;
+  }
+
+</style>
+
+</head>
+<body>
+
+<h1>Calender Mapping</h1>
+<div id = "map"></div>
+
+<script>
+
+function initMap(){
+  // Map options
+
+  var options = {
+  zoom:11,
+  center:{lat:53.3498, lng:-6.2603}
+      }
+
+//New Map
+var map = new google.maps.Map(document.getElementById('map'), options);
+
+/*
+//Add Single Marker
+var marker = new google.maps.Marker({
+  position:{lat:53.2768, lng:-6.2087},
+  map:map,
+
+    //Customer Markers
+//    icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
+
+});
+
+var infoWindow = new google.maps.InfoWindow({
+  content:'<h1>Microsoft Ireland</h1>'
+});
+
+//InfoWindow
+
+marker.addListener('click', function(){
+  infoWindow.open(map,marker);
+})
+*/
+
+addMarker({lat:53.3498, lng:-6.2603});
+addMarker({lat:53.3488, lng:-6.2432});
+addMarker({lat:53.3352, lng:-6.2285});
+addMarker({lat:53.4264, lng:-6.2499});
+
+//Add Marker function
+
+function addMarker(coords){
+  var marker = new google.maps.Marker({
+    position:coords,
+    map:map,
+    icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
+  });
+}
+
+}
+
+</script>
+
+  <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXaSA7KJaM78-08srjTvvUJ9eYPWm4fGE&callback=initMap">
+      </script>
+
+</body>
+</html>
