@@ -4,6 +4,7 @@
   "description": "demo app to make AJAX requests to load results of XSL transformation and send POST requests to add new information to JSON and XML files",
   "main": "app.js",
   "dependencies": {
+    "@google/maps": "^0.4.5",
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "fs": "0.0.1-security",
@@ -16,8 +17,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mikhail-nci/wad-simple-demo.git"
+    "url": "git+https://github.com/stefdworschak/calendar_app.git"
   },
-  "author": "Mikhail",
-  "homepage": "https://github.com/mikhail-nci/wad-simple-demo#readme"
+  "author": "Stefan, Mark, Graham",
+  "homepage": "https://github.com/stefdworschak/web_development_nci#readme"
 }

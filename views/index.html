@@ -2,7 +2,9 @@
 <html lang="en" ng-app>
 
 <head>
-  <title>World Countries and Capitals</title>
+  <title>My Calendar</title>
+  <link rel="icon" type="image/png" href="/img/icon3.png">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/css/bootstrap.min.css">
   <link rel="stylesheet" href="/css/bootstrap-responsive.min.css">
@@ -11,7 +13,14 @@
       padding-top: 60px;
       padding-bottom: 60px;
     }
-    
+    hr {
+      border-top:1px solid lightgray;
+    }
+    h4 {
+      margin-top:0px;
+      padding-top:0px;
+      color:gray;
+    }
     table,
     th,
     td {
@@ -19,66 +28,210 @@
       border: 1px solid black;
       text-align: center;
     }
+    #map {
+      min-width:100%;
+      min-height:500px;
+    }
+    #results {
+      margin-top:20px;
+    }
+    .left {
+      float:left;
+      width:55%;
+      margin-left:30px;
+    }
+    .right {
+      float:right;
+      width:40%;
+    }
+    #search, #reset {
+
+      margin-top:-10px;
+
+    }
+    #logo {
+      height:inherit;
+      width:50px;
+    }
   </style>
   <script src="/js/jquery.min.js"></script>
   <script src="/js/bootstrap.min.js"></script>
+  <script src="/js/aux_functions.js"></script>
   <script>
-    function load() {
-      $.ajax({
-        url: "/get/html",
-        cache: false,
-        success: function(html) {
-          $("#results").append(html);
-        }
-      });
-    };
-
+    var api_key = "AIzaSyBF2VwTjDiUFzvdA3IuQw_8H5JYq803bHs";
+    var marker;
+ 
     $(document).ready(function() {
       load();
+      setMarkers();
+
+      $('#search').on('click',function(){
+        setMarkers();
+      });
+      $('#reset').on('click',function(){
+        $('input[name=search]').val('');
+        setMarkers();
+      });
+
+    }).on('submit',function(obj){
+      var date = $('input[name=date]').val();
+      var time = $('input[name=time]').val();
+      var what = $('input[name=what]').val();
+      var who = $('input[name=who]').val();
+      var where = $('input[name=where]').val();
+      if(!date || !time || !what || !who || !where) {
+        alert("Please fill in all required fields.");
+      }
     });
+
   </script>
 </head>
 
 <body>
-  <div class="container">
+  <div class="container-fluid">
     <div class="navbar navbar-fixed-top navbar-inverse">
       <div class="navbar-inner">
       </div>
     </div>
     <div class="page-header">
-      <h1>World Countries and Capitals</h1>
+      <h1><img src="/img/icon3.png" id="logo" /> My Calendar</h1>
     </div>
+
     <div class="row">
-      <div id="results" class="span8">
+
+      <div class="left">
+
+        <div id="map"></div>
+
       </div>
-      <div class="span4">
-        <ul class="nav nav-list well">
-          <li>
-            <form enctype='application/json' action="/post/json" method="post">
-              <div class="field">
-                <input type="text" name="Country_code" placeholder="Country code">
-              </div>
-              <div class="field">
-                <input type="text" name="Region" placeholder="Region">
-              </div>
-              <div class="field">
-                <input type="text" name="Name" placeholder="Name">
-              </div>
-              <div class="field">
-                <input type="text" name="Capital" placeholder="Capital">
-              </div>
-              <div class="field">
-                <input type="text" name="Phone_code" placeholder="Phone code">
-              </div>
-              <div class="field">
-                <button type="submit">Submit</button>
-              </div>
-            </form>
-          </li>
-        </ul>
+
+      <div class="right">
+
+          <ul class="nav nav-list well">
+            <li>
+                    <div class="field">
+                      <input type="text" name="search" placeholder="Enter keyword..." />
+                      <button id="search">Search</button> <button id="reset">Reset</button>
+                    </div>
+
+            </li>
+            <hr />
+            <li>
+          <form enctype='application/json' action="/post/json" method="post">
+              <h4>Enter New Event:</h4>
+                <div class="field">
+                  <input type="date" name="date" placeholder="Date" />
+                </div>
+                <div class="field">
+                  <input type="time" name="time" placeholder="Time" />
+                </div>
+                <div class="field">
+                  <input type="text" name="what" placeholder="Short Description" />
+                </div>
+                <div class="field">
+                  <input type="text" name="who" placeholder="Entered By" />
+                </div>
+                <div class="field">
+                  <input type="text" name="where" placeholder="Address" />
+                </div>
+                  <input type="hidden" name="coords" />
+                <div class="field">
+                  <button type="submit">Submit</button>
+                </div>
+              </form>
+            </li>
+          </ul>
+
+        <div id="results">
+        </div>
+
       </div>
+
+
     </div>
   </div>
-</body>
+  <script>
 
+        function initMap(home = {lat: 53.348335, lng:-6.255683}, coords) {
+
+
+          //Info for multiple markers
+          //Google: https://developers.google.com/maps/documentation/javascript/examples/infowindow-simple
+          //Stackoverflow: https://stackoverflow.com/questions/11106671/google-maps-api-multiple-markers-with-infowindows
+
+          var myLatLng = home;
+          var myCoords = coords;
+          //Red, blue, green, yellow, white,
+          var colors = ['d62d20','008744','0057e7','ffa700','ffffff','551a8b']
+          var pinUrl = 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|';
+          //console.log(myCoords.appointment.length);
+
+          var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 12,
+            center: myLatLng
+          });
+
+          if(coords) {
+            var marker;
+            var pinImg;
+            var info;
+            var contStr;
+            var people = [];
+            var colCount = 0;
+
+            for(j=0;j<myCoords.appointment.length; j++) {
+              if(people.indexOf(myCoords.appointment[j].who) == -1) {
+                  people.push(myCoords.appointment[j].who)
+              }
+            }
+
+            for(i=0; i < myCoords.appointment.length; i++){
+              var pid = people.indexOf(myCoords.appointment[i].who);
+              contStr = '<div><h3>'+myCoords.appointment[i].what+'</h3>'
+              +'<p>Date: '+myCoords.appointment[i].date+'<br />'
+              +'<p>Time: '+myCoords.appointment[i].time+'<br />'
+              +'<p>Address: '+myCoords.appointment[i].where+'<br />'
+              +'</p></div>'
+              info = new google.maps.InfoWindow({
+                  content: contStr
+              });
+
+              pinImg = new google.maps.MarkerImage(pinUrl+colors[pid]);
+              marker = new google.maps.Marker({
+                position: myCoords.appointment[i].coords,
+                map: map,
+                icon: pinImg,
+                title: myCoords.appointment[i].what
+              });
+
+              google.maps.event.addListener(marker,'click', (function(marker,content,infowindow){
+                  return function() {
+                     infowindow.setContent(content);
+                     infowindow.open(map,marker);
+                  };
+              })(marker,contStr,info));
+
+
+            }
+        } else {console.log("error")}
+
+        }
+
+        function addMarker(para) {
+
+            var marker = new google.maps.Marker({
+              position: para,
+              map: map,
+              title: 'Hello World!'
+            });
+
+        }
+
+      </script>
+      <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBF2VwTjDiUFzvdA3IuQw_8H5JYq803bHs&callback=initMap">
+      </script>
+
+
+</body>
 </html>
