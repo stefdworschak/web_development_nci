@@ -164,6 +164,17 @@
                 "lat": 44.1017575,
                 "lng": -123.1539545
             }
+        },
+        {
+            "date": "2017-11-30",
+            "time": "04:57",
+            "what": "Sean's Birthday",
+            "who": "Mark",
+            "where": "Dundrum",
+            "coords": {
+                "lat": 53.2931758,
+                "lng": -6.246175
+            }
         }
     ]
 }

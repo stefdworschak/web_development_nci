@@ -7,4 +7,5 @@
 ## Some of the code has been taken, although not directly copied, from other sources
 ## These sources will be referenced in the comments of the source files
 
-## Thanks Mark, Graham and Stefan 
+## Thanks,
+## Mark, Graham and Stefan 
