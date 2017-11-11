@@ -8,6 +8,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/css/bootstrap.min.css">
   <link rel="stylesheet" href="/css/bootstrap-responsive.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <style>
     body {
       padding-top: 60px;
@@ -29,32 +31,39 @@
       text-align: center;
     }
     #map {
-      min-width:100%;
-      min-height:500px;
+      margin-left:10px;
+      min-width:90%;
+      min-height:700px;
       border-style:solid;
     }
     #results {
+      
       margin-top:20px;
       border-style:solid;
     }
-    .right {
-      float:left;
-      width:55%;
-      margin-left:30px;
-    }
     .left {
       float:right;
-      width:40%;
+      width:50%;
+      margin-left:30px;
+      
+    }
+    .right {
+      float:left;
+      width:30%;
+      margin-left:30px;
     }
     #search, #reset {
 
       margin-top:-10px;
-
+      
     }
     #logo {
       height:inherit;
       width:50px;
     }
+    
+    
+    
   </style>
   <script src="/js/jquery.min.js"></script>
   <script src="/js/bootstrap.min.js"></script>
@@ -90,11 +99,39 @@
 </head>
 
 <body>
-  <div class="container-fluid">
+  <div class="Add">
+         
+      <p>
+        <a href="#" class="btn btn-info btn-lg">
+          <span class="glyphicon glyphicon-plus"></span> My Add 
+        </a>
+      </p>     
+    </div>
+  
+  <div class="Add-fluid">
     <div class="navbar navbar-fixed-top navbar-inverse">
       <div class="navbar-inner">
       </div>
     </div>
+    
+    
+  <div class="Search">
+     
+      
+        <a href="#" class="btn btn-info btn-lg">
+          <span class="glyphicon glyphicon-search"></span> My Search 
+        </a>
+      </p>
+     <div class="Search-fluid">
+    <div class="navbar navbar-fixed-top navbar-inverse">
+      <div class="navbar-inner">
+      </div>
+    </div>  
+    
+    
+    
+    
+    
     <div class="page-header">
       <h1><img src="/img/icon3.png" id="logo" /> My Calendar</h1>
     </div>
@@ -107,6 +144,8 @@
 
       </div>
 
+      
+      
       <div class="right">
 
           <ul class="nav nav-list well">

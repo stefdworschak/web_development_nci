@@ -175,6 +175,17 @@
                 "lat": 53.2931758,
                 "lng": -6.246175
             }
+        },
+        {
+            "date": "2017-11-15",
+            "time": "21:01",
+            "what": "Event",
+            "who": "Mark",
+            "where": "35 Glenbourne Avenue, Leopardstown",
+            "coords": {
+                "lat": 53.2607969,
+                "lng": -6.200264
+            }
         }
     ]
 }
