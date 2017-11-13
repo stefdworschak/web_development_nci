@@ -41,17 +41,25 @@
       margin-top:20px;
       border-style:solid;
     }
-    .left {
-      float:right;
-      width:50%;
+    .Update {
+      float:centre;
+      width:35%;
       margin-left:30px;
       
     }
-    .right {
-      float:left;
-      width:30%;
+    .left {
+      float:centre;
+      width:90%;
       margin-left:30px;
     }
+    
+    #results{
+      float:centre;
+      width:35%;
+      margin-left:30px;
+    }
+    
+    
     #search, #reset {
 
       margin-top:-10px;
@@ -146,7 +154,7 @@
 
       
       
-      <div class="right">
+      <div class="Update">
 
           <ul class="nav nav-list well">
             <li>
@@ -183,14 +191,15 @@
             </li>
           </ul>
 
-        <div id="results">
-        </div>
-
+       
       </div>
 
 
     </div>
   </div>
+     <div id="results">
+        </div>
+    
   <script>
 
         function initMap(home = {lat: 53.348335, lng:-6.255683}, coords) {
