@@ -9,7 +9,8 @@
   <link rel="stylesheet" href="/css/bootstrap.min.css">
   <link rel="stylesheet" href="/css/bootstrap-responsive.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <style>
     body {
       padding-top: 60px;
@@ -26,6 +27,7 @@
     table,
     th,
     td {
+      
       border-collapse: collapse;
       border: 1px solid black;
       text-align: center;
@@ -39,23 +41,14 @@
     #results {
       
       margin-top:20px;
-      border-style:solid;
-    }
-    .Update {
-      float:centre;
-      width:35%;
-      margin-left:30px;
+      margin-left:33px;
       
     }
+       
+    
     .left {
       float:centre;
       width:90%;
-      margin-left:30px;
-    }
-    
-    #results{
-      float:centre;
-      width:35%;
       margin-left:30px;
     }
     
@@ -70,6 +63,20 @@
       width:50px;
     }
     
+      .AddButton {
+      float:right;
+      width:20%;
+          }
+  
+   .modal, .Update, .modal-dialog {
+     float:centre;
+     margin-left:17%;
+      width:65%;
+      height:65%;
+      
+          }
+  
+  
     
     
   </style>
@@ -107,54 +114,26 @@
 </head>
 
 <body>
-  <div class="Add">
-         
-      <p>
-        <a href="#" class="btn btn-info btn-lg">
-          <span class="glyphicon glyphicon-plus"></span> My Add 
-        </a>
-      </p>     
-    </div>
   
-  <div class="Add-fluid">
-    <div class="navbar navbar-fixed-top navbar-inverse">
-      <div class="navbar-inner">
-      </div>
-    </div>
-    
-    
-  <div class="Search">
-     
-      
-        <a href="#" class="btn btn-info btn-lg">
-          <span class="glyphicon glyphicon-search"></span> My Search 
-        </a>
-      </p>
-     <div class="Search-fluid">
-    <div class="navbar navbar-fixed-top navbar-inverse">
-      <div class="navbar-inner">
-      </div>
-    </div>  
-    
-    
-    
-    
-    
-    <div class="page-header">
-      <h1><img src="/img/icon3.png" id="logo" /> My Calendar</h1>
-    </div>
+   <!-- Partial code taken from W3schools.com. (2017). Bootstrap Modals. [online] Available at: https://www.w3schools.com/bootstrap/bootstrap_modal.asp. -->
+  
+      <div class="AddButton">
+ 
+  <!-- Trigger the modal with a button -->
+  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Enter New Event</button>
 
-    <div class="row">
-
-      <div class="left">
-
-        <div id="map"></div>
-
-      </div>
-
-      
-      
-      <div class="Update">
+  <!-- Modal -->
+  
+    <div class="modal-dialog">
+      <div class="modal fade" id="myModal" role="dialog">
+       <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Enter New Event</h4>
+        </div>
+        <div class="modal-body">
+           <div class="Update">
 
           <ul class="nav nav-list well">
             <li>
@@ -190,15 +169,38 @@
               </form>
             </li>
           </ul>
-
-       
+       <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
-
-
     </div>
   </div>
-     <div id="results">
         </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+   
+ 
+    
+    
+    <div class="page-header">
+      <h1><img src="/img/icon3.png" id="logo" /> My Calendar</h1>
+    </div>
+
+    <div class="row">
+
+      <div class="left">
+
+        <div id="map"></div>
+
+      </div>
+
+     
+     <div id="results">
+    </div> 
+    
     
   <script>
 

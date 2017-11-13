@@ -197,6 +197,28 @@
                 "lat": 53.34881739999999,
                 "lng": -6.2431793
             }
+        },
+        {
+            "date": "2017-12-01",
+            "time": "04:03",
+            "what": "Event",
+            "who": "Mark",
+            "where": "Liberty hall, dublin",
+            "coords": {
+                "lat": 53.3484728,
+                "lng": -6.2556986
+            }
+        },
+        {
+            "date": "2018-01-18",
+            "time": "14:04",
+            "what": "Birthday",
+            "who": "Graham",
+            "where": "NCI college, dublin",
+            "coords": {
+                "lat": 53.34881739999999,
+                "lng": -6.2431793
+            }
         }
     ]
 }

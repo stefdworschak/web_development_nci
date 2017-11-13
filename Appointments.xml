@@ -198,4 +198,26 @@
             <lng>-6.2431793</lng>
         </coords>
     </appointment>
+    <appointment>
+        <date>2017-12-01</date>
+        <time>04:03</time>
+        <what>Event</what>
+        <who>Mark</who>
+        <where>Liberty hall, dublin</where>
+        <coords>
+            <lat>53.3484728</lat>
+            <lng>-6.2556986</lng>
+        </coords>
+    </appointment>
+    <appointment>
+        <date>2018-01-18</date>
+        <time>14:04</time>
+        <what>Birthday</what>
+        <who>Graham</who>
+        <where>NCI college, dublin</where>
+        <coords>
+            <lat>53.34881739999999</lat>
+            <lng>-6.2431793</lng>
+        </coords>
+    </appointment>
 </appointments>
