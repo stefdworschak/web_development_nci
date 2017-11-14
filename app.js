@@ -46,10 +46,16 @@ router.get('/get/json', function(req, res) {
 
     var JSONfile = fs.readFileSync('Appointments.json', 'utf8');
     var JSONparsed = JSON.parse(JSONfile);
-
+   
     res.end(JSON.stringify(JSONparsed));
 
 });
+
+router.get('/json/get',function(req,res) {
+  
+  
+})
+
 
 // POST request to add to JSON & XML files
 router.post('/post/json', function(req, res) {
