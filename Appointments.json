@@ -241,6 +241,39 @@
                 "lat": 53.34187009999999,
                 "lng": -6.309804799999999
             }
+        },
+        {
+            "date": "2017-11-15",
+            "time": "10:00",
+            "what": "Fishing",
+            "who": "Stefan",
+            "where": "Howth",
+            "coords": {
+                "lat": 53.3785693,
+                "lng": -6.0570132
+            }
+        },
+        {
+            "date": "2017-11-15",
+            "time": "10:01",
+            "what": "Fishing",
+            "who": "Stefan",
+            "where": "Howth",
+            "coords": {
+                "lat": 53.3785693,
+                "lng": -6.0570132
+            }
+        },
+        {
+            "date": "2017-11-14",
+            "time": "12:00",
+            "what": "Fishing2",
+            "who": "Stefan",
+            "where": "Dun Lagohaire",
+            "coords": {
+                "lat": 53.2943958,
+                "lng": -6.133866599999999
+            }
         }
     ]
 }

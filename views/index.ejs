@@ -72,8 +72,12 @@
     
       .AddButton {
       float:right;
-      width:20%;
+      width:100%;
           }
+    .AddButton:child {
+      height:100%;
+      border:1px solid black;
+    }
   
    .modal, .Update, .modal-dialog {
      float:centre;
@@ -124,13 +128,34 @@
 </head>
 
 <body>
-  
-  
-   <!-- Partial code taken from W3schools.com. (2017). Bootstrap Modals. [online] Available at: https://www.w3schools.com/bootstrap/bootstrap_modal.asp. -->
-   <div class="AddButton">
-  <!-- Trigger the modal with a button -->
-  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-calendar"></span> Enter New Event </button>
+  <div class="container-fluid">
+   <div class="row"> 
+    <div class="col-md-6">
+    </div>
+    <div class="col-md-6">
+       <!-- Partial code taken from W3schools.com. (2017). Bootstrap Modals. [online] Available at: https://www.w3schools.com/bootstrap/bootstrap_modal.asp. -->
+    <div class="AddButton">
+               
+              <input type="text" name="search" placeholder="Enter keyword..."/>
+              <!-- Search button -->
+              <!--<span class="glyphicon glyphicon-search" style="inline-block;">-->
+              <button id="search" data-dismiss="modal" ><span class="glyphicon glyphicon-search"> Search </button>
+              &nbsp; 
+              <!-- Reset button -->
+              <button id="reset" data-dismiss="modal" ><span class="glyphicon glyphicon-fast-backward"> Reset </button>
+              <!-- Trigger the modal with a button -->
+              <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-calendar"></span> Enter New Event </button>
+    </div>
   </div>
+  </div>
+  <div class="row">
+   <div class="col-md-12">
+
+    
+  <div class="page-header">
+      <h1><img src="/img/icon3.png" id="logo" />My Calendar</h1>
+    </div>
+  
   <!-- Modal -->
     <div id="myModal" class="modal fade" role="dialog">
       <div class="modal-header">
@@ -140,19 +165,7 @@
       <div class="modal-body">
          <!--<div class="Update">-->
 
-        <ul class="nav nav-list well">
-          <li>
-            <div class="field">
-              <input type="text" name="search" placeholder="Enter keyword..." />
-              <!-- Search button -->
-              <button id="search" data-dismiss="modal"><span class="glyphicon glyphicon-search"> Search </button>&nbsp; 
-              <!-- Reset button -->
-              <button id="reset" data-dismiss="modal"><span class="glyphicon glyphicon-fast-backward"> Reset </button>
-            </div>
-          </li>
-              
-          <hr />
-              
+        <ul class="nav nav-list well">              
           <li>
             <form enctype='application/json' action="/post/json" method="post">
               <h4><span class="glyphicon glyphicon-calendar"></span> Enter New Event:</h4>
@@ -173,7 +186,7 @@
               </div>
               <div class="field">
                 <input type="hidden" name="coords" />
-                <button type="submit" data-dismiss="modal">Submit</button>
+                <button type="submit">Submit</button>
               </div>
             </form>
           </li>
@@ -183,24 +196,16 @@
     <div class="modal-footer">
       <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
     </div>
-  </div>
+  </div> 
 
-    <div class="page-header">
-      <h1><img src="/img/icon3.png" id="logo" />My Calendar</h1>
-    </div>
-
-    <div class="row">
-
-      <div class="left">
-
-        <div id="map"></div>
-
-      </div>
-
-     
+     <div id="map"></div>
+    
      <div id="results">
     </div>      
       
+      </div>
+  </div>
+</div>
   <script>
 
         function initMap(home = {lat: 53.348335, lng:-6.255683}, coords) {
@@ -208,8 +213,12 @@
           //Info for multiple markers
           //Google: https://developers.google.com/maps/documentation/javascript/examples/infowindow-simple
           //Stackoverflow: https://stackoverflow.com/questions/11106671/google-maps-api-multiple-markers-with-infowindows
-          var data = <%- JSON.stringify(appointment) %>;
-          console.log(data);
+          if(coords == undefined) {
+             var data = <%- JSON.stringify(appointment) %>
+          } else {
+            var data = coords;
+          }
+         
           var myLatLng = home;
           var myCoords =data;
           //Red, blue, green, yellow, white,

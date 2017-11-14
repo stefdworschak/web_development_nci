@@ -242,4 +242,37 @@
             <lng>-6.309804799999999</lng>
         </coords>
     </appointment>
+    <appointment>
+        <date>2017-11-15</date>
+        <time>10:00</time>
+        <what>Fishing</what>
+        <who>Stefan</who>
+        <where>Howth</where>
+        <coords>
+            <lat>53.3785693</lat>
+            <lng>-6.0570132</lng>
+        </coords>
+    </appointment>
+    <appointment>
+        <date>2017-11-15</date>
+        <time>10:01</time>
+        <what>Fishing</what>
+        <who>Stefan</who>
+        <where>Howth</where>
+        <coords>
+            <lat>53.3785693</lat>
+            <lng>-6.0570132</lng>
+        </coords>
+    </appointment>
+    <appointment>
+        <date>2017-11-14</date>
+        <time>12:00</time>
+        <what>Fishing2</what>
+        <who>Stefan</who>
+        <where>Dun Lagohaire</where>
+        <coords>
+            <lat>53.2943958</lat>
+            <lng>-6.133866599999999</lng>
+        </coords>
+    </appointment>
 </appointments>
