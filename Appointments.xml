@@ -220,4 +220,15 @@
             <lng>-6.2431793</lng>
         </coords>
     </appointment>
+    <appointment>
+        <date>2017-12-25</date>
+        <time>12:00</time>
+        <what>Christmas</what>
+        <who>Mark</who>
+        <where>Bray, co.wicklow</where>
+        <coords>
+            <lat>53.200903</lat>
+            <lng>-6.1110741</lng>
+        </coords>
+    </appointment>
 </appointments>

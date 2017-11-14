@@ -32,6 +32,9 @@
       border: 1px solid black;
       text-align: center;
     }
+    
+   
+    
     #map {
       margin-left:10px;
       min-width:90%;
@@ -39,17 +42,21 @@
       border-style:solid;
     }
     #results {
-      
-      margin-top:20px;
-      margin-left:33px;
+     float:centre; 
+     margin-left:17%;
+      width:30%;
+      height:65%;
+      margin-top:10px;
+      border-style:solid;
       
     }
        
     
     .left {
       float:centre;
-      width:90%;
+      width:95%;
       margin-left:30px;
+      margin-right:30px;
     }
     
     
@@ -75,10 +82,7 @@
       height:65%;
       
           }
-  
-  
-    
-    
+      
   </style>
   <script src="/js/jquery.min.js"></script>
   <script src="/js/bootstrap.min.js"></script>
@@ -115,12 +119,14 @@
 
 <body>
   
+  
+  
    <!-- Partial code taken from W3schools.com. (2017). Bootstrap Modals. [online] Available at: https://www.w3schools.com/bootstrap/bootstrap_modal.asp. -->
   
       <div class="AddButton">
  
   <!-- Trigger the modal with a button -->
-  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Enter New Event</button>
+  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-calendar"></span> Enter New Event </button>
 
   <!-- Modal -->
   
@@ -139,14 +145,14 @@
             <li>
                     <div class="field">
                       <input type="text" name="search" placeholder="Enter keyword..." />
-                      <button id="search">Search</button> <button id="reset">Reset</button>
+                      <button id="search"><span class="glyphicon glyphicon-search"> Search </button> <button id="reset"><span class="glyphicon glyphicon-fast-backward"> Reset </button>
                     </div>
 
             </li>
             <hr />
             <li>
           <form enctype='application/json' action="/post/json" method="post">
-              <h4>Enter New Event:</h4>
+              <h4><span class="glyphicon glyphicon-calendar"></span> Enter New Event:</h4>
                 <div class="field">
                   <input type="date" name="date" placeholder="Date" />
                 </div>
@@ -202,6 +208,8 @@
     </div> 
     
     
+      
+      
   <script>
 
         function initMap(home = {lat: 53.348335, lng:-6.255683}, coords) {
