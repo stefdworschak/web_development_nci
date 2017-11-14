@@ -4,6 +4,7 @@ var http = require('http'),
     express = require('express'),
     bodyParser = require('body-parser'),
     fs = require('fs'),
+    ejs = require('ejs'),
     js2xmlparser = require('js2xmlparser'),
     libxslt = require('libxslt'),
     //Source: https://github.com/googlemaps/google-maps-services-js
@@ -14,13 +15,17 @@ var http = require('http'),
 var router = express();
 var server = http.createServer(router);
 
+router.set('view engine', 'ejs');
 router.use(express.static(path.resolve(__dirname, 'views')));
 router.use(bodyParser.urlencoded({extended: true}));
 router.use(bodyParser.json());
 
 // GET request to dislay index.html located inside /views folder
 router.get('/', function(req, res) {
-  res.render('index');
+  var json = fs.readFileSync('Appointments.json','utf8');
+  var jsonParsed = JSON.parse(json);
+  var jsonStringified = JSON.stringify(jsonParsed);
+  res.render('index', jsonParsed);
 });
 
 // HTML produced by XSL Transformation
@@ -53,6 +58,11 @@ router.get('/get/json', function(req, res) {
 
 router.get('/json/get',function(req,res) {
   
+  res.writeHead(200,{ 'Content-Type': 'application/json' });
+  var json = fs.readFileSync('Teams.json','utf8');
+  var jsonParsed = JSON.parse(json);
+  
+  res.end(JSON.stringify(jsonParsed));
   
 })
 

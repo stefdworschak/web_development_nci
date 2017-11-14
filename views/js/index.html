@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en" ng-app>
+
+<head>
+  <title>My Calendar</title>
+  <link rel="icon" type="image/png" href="/img/icon3.png">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/bootstrap-responsive.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+    body {
+      padding-top: 60px;
+      padding-bottom: 60px;
+    }
+    hr {
+      border-top:1px solid lightgray;
+    }
+    h4 {
+      margin-top:0px;
+      padding-top:0px;
+      color:gray;
+    }
+    table,
+    th,
+    td {
+      
+      border-collapse: collapse;
+      border: 1px solid black;
+      text-align: center;
+    }
+    
+   
+    
+    #map {
+      margin-left:10px;
+      min-width:90%;
+      min-height:700px;
+      border-style:solid;
+    }
+    #results {
+     float:centre; 
+     margin-left:17%;
+      width:30%;
+      height:65%;
+      margin-top:10px;
+      border-style:solid;
+      
+    }
+       
+    
+    .left {
+      float:centre;
+      width:95%;
+      margin-left:30px;
+      margin-right:30px;
+    }
+    
+    
+    #search, #reset {
+
+      margin-top:-10px;
+      
+    }
+    #logo {
+      height:inherit;
+      width:50px;
+    }
+    
+      .AddButton {
+      float:right;
+      width:20%;
+          }
+  
+   .modal, .Update, .modal-dialog {
+     float:centre;
+     margin-left:17%;
+      width:65%;
+      height:65%;
+      
+          }
+      
+  </style>
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
+  <script src="/js/aux_functions.js"></script>
+  <script>
+    var api_key = "AIzaSyBF2VwTjDiUFzvdA3IuQw_8H5JYq803bHs";
+    var marker;
+ 
+    $(document).ready(function() {
+      load();
+      setMarkers();
+
+      $('#search').on('click',function(){
+        setMarkers();
+      });
+      $('#reset').on('click',function(){
+        $('input[name=search]').val('');
+        setMarkers();
+      });
+      
+      $('#myModal').blur(()=>{
+        $('#myModal').toggleModal();
+        $(body).removeClass('modal-open');
+        $('.modal-backdrop fade in').hide();
+      })
+
+    }).on('submit',function(obj){
+      var date = $('input[name=date]').val();
+      var time = $('input[name=time]').val();
+      var what = $('input[name=what]').val();
+      var who = $('input[name=who]').val();
+      var where = $('input[name=where]').val();
+      if(!date || !time || !what || !who || !where) {
+        alert("Please fill in all required fields.");
+      }
+    });
+
+  </script>
+</head>
+
+<body>
+  
+  
+   <!-- Partial code taken from W3schools.com. (2017). Bootstrap Modals. [online] Available at: https://www.w3schools.com/bootstrap/bootstrap_modal.asp. -->
+   <div class="AddButton">
+  <!-- Trigger the modal with a button -->
+  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-calendar"></span> Enter New Event </button>
+  </div>
+  <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+      <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button><h4 class="modal-title">Enter New Event</h4>
+      </div>
+        
+      <div class="modal-body">
+         <!--<div class="Update">-->
+
+        <ul class="nav nav-list well">
+          <li>
+            <div class="field">
+              <input type="text" name="search" placeholder="Enter keyword..." />
+              <!-- Search button -->
+              <button id="search" data-dismiss="modal"><span class="glyphicon glyphicon-search"> Search </button>&nbsp; 
+              <!-- Reset button -->
+              <button id="reset" data-dismiss="modal"><span class="glyphicon glyphicon-fast-backward"> Reset </button>
+            </div>
+          </li>
+              
+          <hr />
+              
+          <li>
+            <form enctype='application/json' action="/post/json" method="post">
+              <h4><span class="glyphicon glyphicon-calendar"></span> Enter New Event:</h4>
+              <div class="field">
+                <input type="date" name="date" placeholder="Date" />
+              </div>
+              <div class="field">
+                <input type="time" name="time" placeholder="Time" />
+              </div>
+              <div class="field">
+                <input type="text" name="what" placeholder="Short Description" />
+              </div>
+              <div class="field">
+               <input type="text" name="who" placeholder="Entered By" />
+              </div>
+              <div class="field">
+                <input type="text" name="where" placeholder="Address" />
+              </div>
+              <div class="field">
+                <input type="hidden" name="coords" />
+                <button type="submit" data-dismiss="modal">Submit</button>
+              </div>
+            </form>
+          </li>
+        </ul>
+      <!--</div>-->
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    </div>
+  </div>
+
+    <div class="page-header">
+      <h1><img src="/img/icon3.png" id="logo" />My Calendar</h1>
+    </div>
+
+    <div class="row">
+
+      <div class="left">
+
+        <div id="map"></div>
+
+      </div>
+
+     
+     <div id="results">
+    </div> 
+    
+    <%- JSON.stringify(appointment) %>
+      
+      
+  <script>
+
+        function initMap(home = {lat: 53.348335, lng:-6.255683}, coords) {
+
+          //Info for multiple markers
+          //Google: https://developers.google.com/maps/documentation/javascript/examples/infowindow-simple
+          //Stackoverflow: https://stackoverflow.com/questions/11106671/google-maps-api-multiple-markers-with-infowindows
+          var data = <%- JSON.stringify(appointment) %>;
+          console.log(data);
+          var myLatLng = home;
+          var myCoords = coords;
+          //Red, blue, green, yellow, white,
+          var colors = ['d62d20','008744','0057e7','ffa700','ffffff','551a8b']
+          var pinUrl = 'https://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|';
+          //console.log(myCoords.appointment.length);
+          var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 12,
+            center: myLatLng
+          });
+
+          if(myCoords) {
+           
+            var marker;
+            var pinImg;
+            var info;
+            var contStr;
+            var people = [];
+            var colCount = 0;
+
+            for(j=0;j<myCoords.length; j++) {
+              if(people.indexOf(myCoords[j].who) == -1) {
+                  people.push(myCoords[j].who)
+              }
+            }
+
+            for(i=0; i < myCoords.length; i++){
+              var pid = people.indexOf(myCoords[i].who);
+              contStr = '<div><h3>'+myCoords[i].what+'</h3>'
+              +'<p>Date: '+myCoords[i].date+'<br />'
+              +'<p>Time: '+myCoords[i].time+'<br />'
+              +'<p>Address: '+myCoords[i].where+'<br />'
+              +'</p></div>'
+              info = new google.maps.InfoWindow({
+                  content: contStr
+              });
+
+              pinImg = new google.maps.MarkerImage(pinUrl+colors[pid]);
+              marker = new google.maps.Marker({
+                position: myCoords[i].coords,
+                map: map,
+                icon: pinImg,
+                title: myCoords[i].what
+              });
+
+              google.maps.event.addListener(marker,'click', (function(marker,content,infowindow){
+                  return function() {
+                     infowindow.setContent(content);
+                     infowindow.open(map,marker);
+                  };
+              })(marker,contStr,info));
+
+
+            }
+        } else {console.log("error")}
+
+        }
+
+       /* function addMarker(para) {
+
+            var marker = new google.maps.Marker({
+              position: para,
+              map: map,
+              title: 'Hello World!'
+            });
+
+        }*/
+
+      </script>
+      <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBF2VwTjDiUFzvdA3IuQw_8H5JYq803bHs&callback=initMap">
+      </script>
+
+
+</body>
+</html>

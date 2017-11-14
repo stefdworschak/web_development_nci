@@ -51,4 +51,9 @@ function setMarkers(){
       initMap(home,json);
     }
   });
+  
+  function settingMarkers(){
+        
+  }
+  
 }
