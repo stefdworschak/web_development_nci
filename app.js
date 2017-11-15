@@ -10,7 +10,13 @@ var http = require('http'),
     //Source: https://github.com/googlemaps/google-maps-services-js
     googleMapsClient = require('@google/maps').createClient({
       key: 'AIzaSyBF2VwTjDiUFzvdA3IuQw_8H5JYq803bHs'
-    });
+    }),
+    session=require('express-session');
+
+//https://www.npmjs.com/package/simple-encryptor
+// Specify a string key:
+var key = 'lqw5nco8123kas01ms810-12dl';
+var encryptor = require('simple-encryptor')(key);
 
 var router = express();
 var server = http.createServer(router);
@@ -20,12 +26,24 @@ router.use(express.static(path.resolve(__dirname, 'views')));
 router.use(bodyParser.urlencoded({extended: true}));
 router.use(bodyParser.json());
 
+// https://www.npmjs.com/package/express-session
+router.use(session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: true
+}));
+
 // GET request to dislay index.html located inside /views folder
 router.get('/', function(req, res) {
-  var json = fs.readFileSync('Appointments.json','utf8');
-  var jsonParsed = JSON.parse(json);
-  var jsonStringified = JSON.stringify(jsonParsed);
-  res.render('index', jsonParsed);
+  
+  if(!req.session.user) {
+    res.render('login');
+  } else {
+    var json = fs.readFileSync('Appointments.json','utf8');
+    var jsonParsed = JSON.parse(json);
+    var jsonStringified = JSON.stringify(jsonParsed);
+    res.render('index', {'data': {'cal':jsonParsed,'user':req.session.user}});
+  }
 });
 
 // HTML produced by XSL Transformation
@@ -107,25 +125,76 @@ router.post('/post/json', function(req, res) {
         } else {console.log('Error:'+err)}
         return res.redirect('/');
     });
-
-    /*console.log(address);
-    var geoUrl = 'https://maps.googleapis.com/maps/api/geocode/json?address='+address+'&key=AIzaSyBF2VwTjDiUFzvdA3IuQw_8H5JYq803bHs'
-    var latlong = https.get(geoUrl, (resp)=> {
-      console.log(resp.results);
-      obj.coords = resp;
-    })*/
   }
   // Call appendJSON function and pass in body of the current POST request
-
   if(req.body.date.length > 0 && req.body.time.length > 0 && req.body.what.length > 0 && req.body.who.length > 0
       && req.body.where.length > 0) {
     appendJSON(req.body);
   } else {console.log("Details missing: "+req.body.date.length+", "+req.body.time.length+", "+req.body.what.length
   +", "+req.body.who.length+", "+req.body.where.length+", "+req.body.coords.length);}
   // Re-direct the browser back to the page, where the POST request came from
+});
 
+router.post('/login',(req,res)=>{
+    console.log(true);
+    var file = fs.readFileSync("users.json","utf-8");
+    var loggedin = false;
+    var users = JSON.parse(file).users;
+    var username = req.body.username;
+    var password = req.body.password;
+
+    for(i=0;i<users.length;i++){
+        if(users[i].username == username) {
+          if(encryptor.decrypt(users[i].password) == password) {
+            loggedin=true;
+            delete users[i].password;
+            var details = users[i];
+            console.log(details);
+            req.session.user=details;
+            res.redirect('/?q=loggedin');
+          }
+        }
+    }
+    if(!loggedin) {res.redirect('/?q=login-error');}
 
 });
+
+router.get('/logout',(req,res)=>{
+    req.session.destroy((err)=>{
+
+    });
+    res.redirect('/')
+})
+
+router.post('/register',(req,res)=>{
+
+    function writeToFile(obj) {
+        console.log("register");
+        ///var newJson = JSON.stringify(obj, null, 4);
+        var json =JSON.parse(fs.readFileSync('users.json','utf-8'));
+
+        var user = {};
+        user.userid = json.users.length+1;
+        user.username = obj.username;
+        user.first_name = obj.first_name;
+        user.last_name = obj.last_name;
+        //https://www.npmjs.com/package/simple-encryptor
+        user.password = encryptor.encrypt(obj.passw);
+      
+        console.log(user);
+        json.users.push(user);
+        console.log(json);
+        fs.writeFileSync('users.json',JSON.stringify(json));
+        fs.close();
+        req.session.user = user;
+        res.redirect('/');
+    }
+
+    writeToFile(req.body);
+
+})
+
+
 server.listen(process.env.PORT || 3000, process.env.IP || "0.0.0.0", function() {
   var addr = server.address();
   console.log("Server listening at", addr.address + ":" + addr.port);

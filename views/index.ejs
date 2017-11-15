@@ -38,7 +38,7 @@
     #map {
       margin-left:10px;
       min-width:90%;
-      min-height:700px;
+      min-height:600px;
       border-style:solid;
     }
     #results {
@@ -52,15 +52,7 @@
     }
     .container-fluid {
       
-    } 
-    
-    .left {
-      float:centre;
-      width:95%;
-      margin-left:30px;
-      margin-right:30px;
-    }
-    
+    }     
     
     #search, #reset {
 
@@ -73,8 +65,9 @@
     }
     
       .AddButton {
-      float:right;
-      width:100%;
+        margin:10px;
+        height:100%;
+        border:1px solid gray;
           }
   
    .modal, .Update, .modal-dialog {
@@ -86,6 +79,26 @@
           }
     .myNav {
       margin-bottom:20px;
+    }
+    h1 {margin:0px;}
+    .page-header {
+      margin:10px;
+      padding:0px;
+    }
+    input[name='search'] {
+      height:auto;
+    }
+    .btn-sm {
+      
+    }
+    #userdisplay{
+      color:white;
+      margin:0px;
+      padding:0px;
+      margin-right:20px;
+      vertical-align:middle;
+      line-height:16px;
+      min-height:100%;
     }
       
   </style>
@@ -100,10 +113,15 @@
       load();
      // setMarkers();
 
-      $('#search').on('click',function(){
+      $('#searchBtn').on('click',function(){
         setMarkers();
       });
-      $('#reset').on('click',function(){
+      $('input[name=search]').keyup((evt)=>{
+          if(evt.key === 'Enter') {
+            setMarkers();
+          }
+      });
+      $('#resetBtn').on('click',function(){
         $('input[name=search]').val('');
         setMarkers();
       });
@@ -113,6 +131,14 @@
         $(body).removeClass('modal-open');
         $('.modal-backdrop fade in').hide();
       })
+     
+     $('#logoutBtn').click(()=>{
+          window.location = '/logout';
+      })
+     
+     var user = <%- JSON.stringify(data.user) %>;
+    
+      //$('#userdisplay').text(user.first_name);
 
     }).on('submit',function(obj){
       var date = $('input[name=date]').val();
@@ -131,36 +157,37 @@
 <body>
   <div class="container-fluid">
     <div class="row myNav"> 
-      <div class="col-md-12" style="min-height:45px; background:#212121;">
+      <div class="col-md-12" style="min-height:45px; background:#212121; text-align:right; padding-top:5px;padding-bottom:5px;">
+        <span id="userdisplay">Hi, <%= data.user.first_name %>!</span>
+        <button type="button" class="btn btn-danger" style="min-height:45; display:inline;" id="logoutBtn">Log Out</button>
       </div>
     </div>
    <div class="row"> 
-    <div class="col-md-6">
+    <div class="col-sm-7 col-md-7 pull-left">
+      <div class="page-header">
+          <h1 style="display:inline-blockstyle;"><img src="/img/icon3.png" id="logo" />My Calendar</h1>
+      </div>
     </div>
-    <div class="col-md-6">
-       <!-- Partial code taken from W3schools.com. (2017). Bootstrap Modals. [online] Available at: https://www.w3schools.com/bootstrap/bootstrap_modal.asp. -->
-    <div class="AddButton">
-               
-              <input type="text" name="search" placeholder="Enter keyword..."/>
-              <!-- Search button -->
-              <!--<span class="glyphicon glyphicon-search" style="inline-block;">-->
-              <button id="search" data-dismiss="modal" ><span class="glyphicon glyphicon-search"> Search </button>
-              &nbsp; 
-              <!-- Reset button -->
-              <button id="reset" data-dismiss="modal" ><span class="glyphicon glyphicon-fast-backward"> Reset </button>
-              <!-- Trigger the modal with a button -->
-              <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-calendar"></span> Enter New Event </button>
-    </div>
+    <div class="col-sm-3 col-md-3">
+      
+      <div class="input-group">
+        <input type="text" class="form-control" aria-label="..." style="min-height:35px" name="search">
+        <div class="input-group-btn" >
+          <button class="btn btn-default btn-md" type="button" id="searchBtn"><span class="glyphicon glyphicon-search"></button>
+            <button class="btn btn-default btn-md" type="button" id="resetBtn"><span class="glyphicon glyphicon-fast-backward"></button>
+        </div>
+      </div>
+          
+   </div>
+   <div class="col-sm-2 col-md-2 pull-right"> 
+        <!-- Search button -->
+        <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-calendar">
+        </span> Enter New Event </button>
   </div>
   </div>
   <div class="row">
    <div class="col-md-12">
-
-    
-  <div class="page-header">
-      <h1><img src="/img/icon3.png" id="logo" />My Calendar</h1>
-    </div>
-  
+  <!-- Partial code taken from W3schools.com. (2017). Bootstrap Modals. [online] Available at: https://www.w3schools.com/bootstrap/bootstrap_modal.asp. -->
   <!-- Modal -->
     <div id="myModal" class="modal fade" role="dialog">
       <div class="modal-header">
@@ -219,7 +246,8 @@
           //Google: https://developers.google.com/maps/documentation/javascript/examples/infowindow-simple
           //Stackoverflow: https://stackoverflow.com/questions/11106671/google-maps-api-multiple-markers-with-infowindows
           if(coords == undefined) {
-             var data = <%- JSON.stringify(appointment) %>
+             var data = <%- JSON.stringify(data.cal.appointment) %>
+             console.log(data);
           } else {
             var data = coords;
           }

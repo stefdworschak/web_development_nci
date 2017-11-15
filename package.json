@@ -8,9 +8,11 @@
     "body-parser": "^1.15.2",
     "ejs": "^2.5.7",
     "express": "^4.14.0",
+    "express-session": "^1.15.6",
     "fs": "0.0.1-security",
     "js2xmlparser": "^2.0.2",
-    "libxslt": "^0.6.3"
+    "libxslt": "^0.6.3",
+    "simple-encryptor": "^1.1.1"
   },
   "devDependencies": {},
   "scripts": {

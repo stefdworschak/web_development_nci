@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <title>Bootstrap</title>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+      <!-- Latest compiled and minified CSS -->
+      <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" />
+
+      <!-- jQuery library -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+      <!-- Latest compiled JavaScript -->
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <!-- https://jqueryvalidation.org/ -->
+      <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+      <style>
+        h3.modal-title {
+          display:inline-block;
+        }
+        #imgRow{
+          min-width:100%; 
+          overflow:hidden; 
+          margin:0px;
+          padding:0px;
+        }
+        .container-fluid{padding:0px; width:100%; margin:0px;}
+        #loginImg{padding:0px;margin:0px;}
+        #captions {
+          position:absolute;
+          top:30%;
+          left:50%;
+          transform:translate(-50%,-50%);
+          text-align:center;
+          width:100%;
+          background:#FFF;
+          opacity:0.5;
+         
+        }
+        h1#imgCaption {
+           font-size:100%;
+           width:100%;
+           text-align:center;
+        }
+        .row {max-width:100%;overflow:hidden;padding:0px;margin:0px;}
+        #alignCaptions {
+          position:absolute;
+          width:100%;
+          top:30%;
+          left:50%;
+          transform:translate(-50%,-50%);
+          font-size:500%;
+          opacity:1;
+          text-align:center;
+        }
+        h2#imgCaption2 {
+          margin:0px;  
+          margin-bottom:20px;
+          text-align:center;
+          width:100%;
+        }
+        img{padding:0px;margin:0px;width:100%)}
+      </style>
+      <script src="js/validation.js"></script>
+  </head>
+  <body>
+
+    <div class="container-fluid">
+      <div class="row">
+          <div class="col" style="min-height:45px;background:#212121; padding:0px;margin:0px;">
+              <div class="pull-left col-md-11">
+              </div>
+              <div class="pull-right col-md-1" style="margin:0px;padding:0px">
+                <span id="userdisplay"></span>
+                <button type="button" class="btn btn-primary" style="margin-top:6px;margin-right:10px;" data-toggle="modal" data-target="#loginForm">Log In</button>
+              </div>
+          </div>
+      </div>
+      <div class="row" id="imgRow">
+        <div class="pull-left col-sd-12 col-md-12" id="loginImg">
+           <img src="img/map.jpeg" alt="Calendar, laptop and various items on a desk with people" width="102%" padding="0" />
+          <div id="captions">
+            <h1>&nbsp;</h1>
+          <h2>
+            &nbsp;
+          </h2>
+          </div>
+          <div id="alignCaptions">
+              <h1 id="imgCaption" class="centered">Calendar App</h1>
+            <h2 id="imgCaption2">
+              Share Precious Moments!
+            </h2>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Login Form Start -->
+    <div class="modal" tabindex="-1" role="dialog" id="loginForm">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title">Login</h3>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+          <form enctype="application/x-www-form-urlencoded" method="post" action="/login" id="loginForm">
+            <div class="input-group input-group-md">
+
+              <span class="input-group-addon" id="sizing-addon1">Email Address</span>
+              <input type="email" class="form-control" aria-label="Username" aria-describedby="sizing-addon1" name="username">
+
+            </div>
+            <br>
+            <div class="input-group input-group-md">
+
+              <span class="input-group-addon" id="sizing-addon1">Password</span>
+              <input type="password" class="form-control" aria-label="Password" aria-describedby="sizing-addon1" name="password">
+
+            </div>
+          </div>
+          <div class="modal-footer">
+            <input type="hidden" name="type" value="login" />
+            <button type="submit" class="btn btn-primary">Log In</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <br />
+            <span class="pull-left">Not registered yet? <a href="#" id="newUser">Click here</a> to create an account. </span>
+          </div>
+        </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Login Form End -->
+
+    <!-- Registration Form Start -->
+
+    <div class="modal" tabindex="-1" role="dialog" id="regForm">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title">Register an Account</h3>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+          <form enctype="application/x-www-form-urlencoded" method="post" action="/register" id="registrationForm">
+            <div class="input-group input-group-md">
+              <span class="input-group-addon" id="sizing-addon1">Email Address</span>
+              <input type="email" class="form-control regForm" aria-label="Email Address" aria-describedby="sizing-addon1" name="username" required />
+            </div>
+            <br>
+            <div class="input-group input-group-md">
+              <span class="input-group-addon" id="sizing-addon1">First Name</span>
+              <input type="text" class="form-control regForm" aria-label="First Name" aria-describedby="sizing-addon1" name="first_name" required />
+            </div>
+            <br>
+            <div class="input-group input-group-md">
+              <span class="input-group-addon" id="sizing-addon1">Last Name</span>
+              <input type="text" class="form-control regForm" aria-label="Last Name" aria-describedby="sizing-addon1" name="last_name" required />
+            </div>
+            <br>
+            <div class="input-group input-group-md">
+              <span class="input-group-addon" id="sizing-addon1">Password</span>
+              <input type="password" class="form-control regForm" aria-label="Password" aria-describedby="sizing-addon1" name="passw" required />
+            </div>
+            <br />
+            <div class="input-group input-group-md">
+              <span class="input-group-addon" id="sizing-addon1">Repeat Password</span>
+              <input type="password" class="form-control regForm" aria-label="Repeat Password" aria-describedby="sizing-addon1" name="repeatpassword" required />
+            </div>
+          </div>
+          <div class="modal-footer">
+            <input type="hidden" name="regVerified" value="0" />
+            <input type="hidden" name="type" value="registration" />
+            <button type="submit" class="btn btn-primary" onsubmit="return false">Register</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          </div>
+        </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Registration Form End -->
+
+
+
+  </body>
+</html>
