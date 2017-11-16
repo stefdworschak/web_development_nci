@@ -41,7 +41,14 @@ router.get('/', function(req, res) {
   } else {
     var json = fs.readFileSync('Appointments.json','utf8');
     var jsonParsed = JSON.parse(json);
+    
+    for(i = jsonParsed.appointment.length-1; i >= 0;i--){
+      if(jsonParsed.appointment[i].who !== req.session.user.userid){
+        jsonParsed.appointment.splice(i,1);
+      } 
+    }
     var jsonStringified = JSON.stringify(jsonParsed);
+    
     res.render('index', {'data': {'cal':jsonParsed,'user':req.session.user}});
   }
 });

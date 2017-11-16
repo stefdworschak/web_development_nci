@@ -1,16 +1,31 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en" ng-app>
-
 <head>
   <title>My Calendar</title>
   <link rel="icon" type="image/png" href="/img/icon3.png">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/css/bootstrap-responsive.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+  <!--
+      Replaced with the below to display modals properly
+      <link rel="stylesheet" href="/css/bootstrap.min.css">
+      <link rel="stylesheet" href="/css/bootstrap-responsive.min.css">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  -->
+    <!-- Latest compiled and minified CSS -->
+      <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" />
+
+      <!-- jQuery library -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+      <!-- Latest compiled JavaScript -->
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <!-- https://jqueryvalidation.org/ -->
+      <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+
   <style>
     body {
       /*padding-top: 60px;*/
@@ -64,7 +79,7 @@
       width:50px;
     }
     
-      .AddButton {
+   .AddButton {
         margin:10px;
         height:100%;
         border:1px solid gray;
@@ -99,6 +114,10 @@
       vertical-align:middle;
       line-height:16px;
       min-height:100%;
+    }
+    input[type="date"],input[type="time"] {
+      line-height:inherit;
+      width:default;
     }
       
   </style>
@@ -155,89 +174,73 @@
 </head>
 
 <body>
+  
+  <!-- container-fluid start -->
   <div class="container-fluid">
+    
+    <!-- nav start -->
     <div class="row myNav"> 
+      
       <div class="col-md-12" style="min-height:45px; background:#212121; text-align:right; padding-top:5px;padding-bottom:5px;">
         <span id="userdisplay">Hi, <%= data.user.first_name %>!</span>
         <button type="button" class="btn btn-danger" style="min-height:45; display:inline;" id="logoutBtn">Log Out</button>
       </div>
-    </div>
-   <div class="row"> 
-    <div class="col-sm-7 col-md-7 pull-left">
-      <div class="page-header">
-          <h1 style="display:inline-blockstyle;"><img src="/img/icon3.png" id="logo" />My Calendar</h1>
-      </div>
-    </div>
-    <div class="col-sm-3 col-md-3">
       
-      <div class="input-group">
-        <input type="text" class="form-control" aria-label="..." style="min-height:35px" name="search">
-        <div class="input-group-btn" >
-          <button class="btn btn-default btn-md" type="button" id="searchBtn"><span class="glyphicon glyphicon-search"></button>
-            <button class="btn btn-default btn-md" type="button" id="resetBtn"><span class="glyphicon glyphicon-fast-backward"></button>
-        </div>
-      </div>
-          
-   </div>
-   <div class="col-sm-2 col-md-2 pull-right"> 
-        <!-- Search button -->
-        <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-calendar">
-        </span> Enter New Event </button>
-  </div>
-  </div>
-  <div class="row">
-   <div class="col-md-12">
-  <!-- Partial code taken from W3schools.com. (2017). Bootstrap Modals. [online] Available at: https://www.w3schools.com/bootstrap/bootstrap_modal.asp. -->
-  <!-- Modal -->
-    <div id="myModal" class="modal fade" role="dialog">
-      <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button><h4 class="modal-title">Enter New Event</h4>
-      </div>
-        
-      <div class="modal-body">
-         <!--<div class="Update">-->
-
-        <ul class="nav nav-list well">              
-          <li>
-            <form enctype='application/json' action="/post/json" method="post">
-              <h4><span class="glyphicon glyphicon-calendar"></span> Enter New Event:</h4>
-              <div class="field">
-                <input type="date" name="date" placeholder="Date" />
-              </div>
-              <div class="field">
-                <input type="time" name="time" placeholder="Time" />
-              </div>
-              <div class="field">
-                <input type="text" name="what" placeholder="Short Description" />
-              </div>
-              <div class="field">
-               <input type="text" name="who" placeholder="Entered By" />
-              </div>
-              <div class="field">
-                <input type="text" name="where" placeholder="Address" />
-              </div>
-              <div class="field">
-                <input type="hidden" name="coords" />
-                <button type="submit">Submit</button>
-              </div>
-            </form>
-          </li>
-        </ul>
-      <!--</div>-->
     </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-    </div>
-  </div> 
-
-     <div id="map"></div>
+    <!-- nav end --> 
     
-     <div id="results">
-    </div>      
-      
+    <!-- row start --> 
+    <div class="row"> 
+     
+        <!-- col width 7 start --> 
+        <div class="col-sm-7 col-md-7 pull-left">
+          <div class="page-header">
+              <h1 style="display:inline-blockstyle;"><img src="/img/icon3.png" id="logo" />My Calendar</h1>
+          </div>
+        </div>
+        <!-- col width 7 end --> 
+     
+        <!-- col width 3 start --> 
+        <div class="col-sm-3 col-md-3">
+
+          <div class="input-group">
+            <input type="text" class="form-control" aria-label="..." style="min-height:35px" name="search" />
+            <div class="input-group-btn" >
+              <button class="btn btn-default btn-md" type="button" id="searchBtn"><span class="glyphicon glyphicon-search"></button>
+                <button class="btn btn-default btn-md" type="button" id="resetBtn"><span class="glyphicon glyphicon-fast-backward"></button>
+            </div>
+          </div>
+
+       </div>
+       <!-- col width 3 start -->      
+       
+       <!-- col width 2 start --> 
+       <div class="col-sm-2 col-md-2 pull-right"> 
+          <!-- Search button -->
+          <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-calendar">
+
+          </span> Enter New Event </button>
+          <button type="button"  class="btn btn-info btn-md"  data-toggle="modal" data-target="#shareForm">
+             <span class="glyphicon glyphicon-share"></span>
+         </button>
       </div>
-  </div>
+    </div>
+      
+    <div class="row">
+        <div class="col-md-12">
+          
+          <div id="map"></div>
+
+           <div id="results"></div>      
+
+        </div>
+    </div>
+      
+<!-- container-fluid end -->      
 </div>
+<!-- container-fluid end -->
+     
+     
   <script>
 
         function initMap(home = {lat: 53.348335, lng:-6.255683}, coords) {
@@ -325,6 +328,71 @@
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBF2VwTjDiUFzvdA3IuQw_8H5JYq803bHs&callback=initMap">
       </script>
 
+      <!-- Partial code taken from W3schools.com. (2017). Bootstrap Modals. [online] Available at: https://www.w3schools.com/bootstrap/bootstrap_modal.asp. -->
+      <!-- Modal -->
+      <div class="modal" role="dialog" id="myModal">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button><h4 class="modal-title">Enter New Event</h4>
+            </div>
+            <div class="modal-body">
+                <form enctype='application/json' action="/post/json" method="post">
+                    <h4><span class="glyphicon glyphicon-calendar"></span> Enter New Event:</h4>
+                    <div class="field">
+                        <input type="date" name="date" placeholder="Date" />
+                    </div>
+                    <div class="field">
+                        <input type="time" name="time" placeholder="Time" />
+                    </div>
+                    <div class="field">
+                        <input type="text" name="what" placeholder="Short Description" />
+                    </div>
+                    <div class="field">
+                        <input type="text" name="where" placeholder="Address" />
+                    </div>
+                    <div class="field">
+                        <input type="hidden" name="who" value="<%= data.user.userid %>" />
+                        <input type="hidden" name="coords" />
+                       <button type="submit">Submit</button>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div> 
+      <!-- End Modal -->
+
+      <!-- Share Form Start -->
+      <div class="modal" tabindex="-1" role="dialog" id="shareForm">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4><span class="glyphicon glyphicon-share">&nbsp;</span>Share Calendar:</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+            <form enctype="application/x-www-form-urlencoded" method="post" action="/share" id="loginForm">
+              <div class="input-group input-group-md">
+                <span class="input-group-addon" id="sizing-addon1">@</span>
+                <input type="email" class="form-control" aria-label="Username" aria-describedby="sizing-addon1" name="username">
+            </div>
+            <div class="modal-footer">
+              <input type="hidden" name="type" value="login" />
+              <button type="submit" class="btn btn-primary">Share</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            </div>
+          </form>
+          </div>
+        </div>
+      </div>
+     </div>
+      <!-- Share Form End -->
 
 </body>
 </html>

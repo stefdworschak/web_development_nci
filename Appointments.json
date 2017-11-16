@@ -4,7 +4,7 @@
             "date": "2017-11-17",
             "time": "22:02",
             "what": "Event",
-            "who": "Stefan",
+            "who": 1,
             "where": "2 Grand Canal Dock, Dublin 2, IE",
             "coords": {
                 "lat": 53.33873579999999,
@@ -15,7 +15,7 @@
             "date": "2017-11-15",
             "time": "03:00",
             "what": "Birthday",
-            "who": "Mark",
+            "who": 2,
             "where": "45 The Moorings, Portobello Harbour, Dublin 8, Ireland",
             "coords": {
                 "lat": 53.33042469999999,
@@ -26,7 +26,7 @@
             "date": "2017-11-16",
             "time": "02:02",
             "what": "Fussball",
-            "who": "Mark",
+            "who": 2,
             "where": "National College of Ireland, Dublin",
             "coords": {
                 "lat": 53.34881739999999,
@@ -37,7 +37,7 @@
             "date": "2017-11-14",
             "time": "12:12",
             "what": "Exam",
-            "who": "Stefan",
+            "who": 1,
             "where": "Stephen's Green Shopping Center",
             "coords": {
                 "lat": 53.33999009999999,
@@ -48,7 +48,7 @@
             "date": "2017-11-16",
             "time": "20:00",
             "what": "Dentist",
-            "who": "Stefan",
+            "who": 1,
             "where": "Rathmines",
             "coords": {
                 "lat": 53.3218816,
@@ -59,7 +59,7 @@
             "date": "2017-11-08",
             "time": "20:20",
             "what": "Champions League",
-            "who": "Stefan",
+            "who": 1,
             "where": "The Whoolshed",
             "coords": {
                 "lat": 53.350356,
@@ -70,7 +70,7 @@
             "date": "2017-11-08",
             "time": "20:20",
             "what": "Champions League",
-            "who": "Graham",
+            "who": 3,
             "where": "The Whoolshed",
             "coords": {
                 "lat": 53.350356,
@@ -81,7 +81,7 @@
             "date": "2017-11-21",
             "time": "20:02",
             "what": "Train",
-            "who": "Stefan",
+            "who": 1,
             "where": "Conelly Station",
             "coords": {
                 "lat": 40.6754634,
@@ -92,7 +92,7 @@
             "date": "2017-11-21",
             "time": "20:02",
             "what": "Train",
-            "who": "Stefan",
+            "who": 1,
             "where": "Conelly Station",
             "coords": {
                 "lat": 40.6754634,
@@ -103,7 +103,7 @@
             "date": "2017-11-14",
             "time": "22:02",
             "what": "Event",
-            "who": "Stefan",
+            "who": 1,
             "where": "DCU",
             "coords": {
                 "lat": 38.9071923,
@@ -114,7 +114,7 @@
             "date": "2017-11-15",
             "time": "22:22",
             "what": "Event",
-            "who": "Graham",
+            "who": 3,
             "where": "Dublin City University",
             "coords": {
                 "lat": 53.385062,
@@ -125,7 +125,7 @@
             "date": "2017-11-21",
             "time": "14:00",
             "what": "Tour",
-            "who": "Mark",
+            "who": 2,
             "where": "Kilmainham Jail",
             "coords": {
                 "lat": 53.34187009999999,
@@ -136,7 +136,7 @@
             "date": "2017-11-05",
             "time": "14:00",
             "what": "The Big Shop",
-            "who": "Aine",
+            "who": 4,
             "where": "Lidl, Terenure",
             "coords": {
                 "lat": 53.309209,
@@ -147,7 +147,7 @@
             "date": "2017-11-08",
             "time": "10:01",
             "what": "College",
-            "who": "Mark",
+            "who": 2,
             "where": "University College Dublin",
             "coords": {
                 "lat": 53.3053439,
@@ -158,7 +158,7 @@
             "date": "2017-11-22",
             "time": "10:00",
             "what": "Football Gam",
-            "who": "Graham",
+            "who": 3,
             "where": "Lansdown Road",
             "coords": {
                 "lat": 44.1017575,
@@ -169,7 +169,7 @@
             "date": "2017-11-30",
             "time": "04:57",
             "what": "Sean's Birthday",
-            "who": "Mark",
+            "who": 2,
             "where": "Dundrum",
             "coords": {
                 "lat": 53.2931758,
@@ -180,7 +180,7 @@
             "date": "2017-11-15",
             "time": "21:01",
             "what": "Event",
-            "who": "Mark",
+            "who": 2,
             "where": "35 Glenbourne Avenue, Leopardstown",
             "coords": {
                 "lat": 53.2607969,
@@ -191,7 +191,7 @@
             "date": "2017-11-30",
             "time": "03:03",
             "what": "Event",
-            "who": "Mark",
+            "who": 2,
             "where": "National College of Ireland, Dublin",
             "coords": {
                 "lat": 53.34881739999999,
@@ -202,7 +202,7 @@
             "date": "2017-12-01",
             "time": "04:03",
             "what": "Event",
-            "who": "Mark",
+            "who": 2,
             "where": "Liberty hall, dublin",
             "coords": {
                 "lat": 53.3484728,
@@ -213,7 +213,7 @@
             "date": "2018-01-18",
             "time": "14:04",
             "what": "Birthday",
-            "who": "Graham",
+            "who": 3,
             "where": "NCI college, dublin",
             "coords": {
                 "lat": 53.34881739999999,
@@ -224,7 +224,7 @@
             "date": "2017-12-25",
             "time": "12:00",
             "what": "Christmas",
-            "who": "Mark",
+            "who": 2,
             "where": "Bray, co.wicklow",
             "coords": {
                 "lat": 53.200903,
@@ -235,7 +235,7 @@
             "date": "2017-11-22",
             "time": "10:00",
             "what": "Visit",
-            "who": "Stefan",
+            "who": 1,
             "where": "Kilmainhaim Jail",
             "coords": {
                 "lat": 53.34187009999999,
@@ -246,7 +246,7 @@
             "date": "2017-11-15",
             "time": "10:00",
             "what": "Fishing",
-            "who": "Stefan",
+            "who": 1,
             "where": "Howth",
             "coords": {
                 "lat": 53.3785693,
@@ -257,7 +257,7 @@
             "date": "2017-11-15",
             "time": "10:01",
             "what": "Fishing",
-            "who": "Stefan",
+            "who": 1,
             "where": "Howth",
             "coords": {
                 "lat": 53.3785693,
@@ -268,7 +268,7 @@
             "date": "2017-11-14",
             "time": "12:00",
             "what": "Fishing2",
-            "who": "Stefan",
+            "who": 1,
             "where": "Dun Lagohaire",
             "coords": {
                 "lat": 53.2943958,
