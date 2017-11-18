@@ -90,6 +90,28 @@ router.get('/json/get',function(req,res) {
   res.end(JSON.stringify(jsonParsed));
   
 })
+router.post('/post/share',function(req,res){
+  
+  function appendJSON(obj){
+    var sharedBy = 0;
+    var sharedWith = 0;
+    var AppointmentsFile = fs.readFileSync('Appointments.json', 'utf8');
+    var appointments = JSON.parse(AppointmentsFile).appointment;
+    var UsersFile = fs.readFileSync('users.json', 'utf8');
+    var users = JSON.parse(UsersFile).users;
+    console.log(users[0].username);
+    for(i = 0; i < users.length;i++){
+      if(users[i].username === obj.sharemail) {
+        console.log(users[i].username);
+        //appointment.push(obj)
+      }
+    }
+    
+  }
+  appendJSON(req.body);
+  
+})
+
 
 
 // POST request to add to JSON & XML files

@@ -157,17 +157,8 @@
      
      var user = <%- JSON.stringify(data.user) %>;
     
-      //$('#userdisplay').text(user.first_name);
-
-    }).on('submit',function(obj){
-      var date = $('input[name=date]').val();
-      var time = $('input[name=time]').val();
-      var what = $('input[name=what]').val();
-      var who = $('input[name=who]').val();
-      var where = $('input[name=where]').val();
-      if(!date || !time || !what || !who || !where) {
-        alert("Please fill in all required fields.");
-      }
+      //$('#userdisplay').text(user.first_name);   
+     
     });
 
   </script>
@@ -337,22 +328,22 @@
                 <button type="button" class="close" data-dismiss="modal">&times;</button><h4 class="modal-title">Enter New Event</h4>
             </div>
             <div class="modal-body">
-                <form enctype='application/json' action="/post/json" method="post">
+                <form enctype='application/json' action="/post/json" method="post" id="enterForm">
                     <h4><span class="glyphicon glyphicon-calendar"></span> Enter New Event:</h4>
                     <div class="field">
-                        <input type="date" name="date" placeholder="Date" />
+                        <input type="date" name="date" placeholder="Date" required />
                     </div>
                     <div class="field">
-                        <input type="time" name="time" placeholder="Time" />
+                        <input type="time" name="time" placeholder="Time" required />
                     </div>
                     <div class="field">
-                        <input type="text" name="what" placeholder="Short Description" />
+                        <input type="text" name="what" placeholder="Short Description" required />
                     </div>
                     <div class="field">
-                        <input type="text" name="where" placeholder="Address" />
+                        <input type="text" name="where" placeholder="Address" required />
                     </div>
                     <div class="field">
-                        <input type="hidden" name="who" value="<%= data.user.userid %>" />
+                        <input type="hidden" name="who" value="<%= data.user.userid %>" required />
                         <input type="hidden" name="coords" />
                        <button type="submit">Submit</button>
                     </div>
@@ -371,19 +362,18 @@
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h4><span class="glyphicon glyphicon-share">&nbsp;</span>Share Calendar:</h4>
+              <h4><span class="glyphicon glyphicon-share">&nbsp;</span>Enter User Email To Share Calendar:</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
-            <form enctype="application/x-www-form-urlencoded" method="post" action="/share" id="loginForm">
+            <form enctype="application/x-www-form-urlencoded" method="post" action="/post/share" id="shareForm">
               <div class="input-group input-group-md">
                 <span class="input-group-addon" id="sizing-addon1">@</span>
-                <input type="email" class="form-control" aria-label="Username" aria-describedby="sizing-addon1" name="username">
+                <input type="email" class="form-control" aria-label="ShareMail" aria-describedby="sizing-addon1" name="sharemail">
             </div>
             <div class="modal-footer">
-              <input type="hidden" name="type" value="login" />
               <button type="submit" class="btn btn-primary">Share</button>
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
             </div>
