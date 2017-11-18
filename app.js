@@ -104,9 +104,10 @@ router.post('/post/share',function(req,res){
       if(users[i].username === obj.sharemail) {
         console.log(users[i].username);
         //appointment.push(obj)
+        shar
       }
     }
-    
+    res.redirect('/');
   }
   appendJSON(req.body);
   
@@ -198,8 +199,6 @@ router.get('/logout',(req,res)=>{
 router.post('/register',(req,res)=>{
 
     function writeToFile(obj) {
-        console.log("register");
-        ///var newJson = JSON.stringify(obj, null, 4);
         var json =JSON.parse(fs.readFileSync('users.json','utf-8'));
 
         var user = {};
@@ -209,10 +208,9 @@ router.post('/register',(req,res)=>{
         user.last_name = obj.last_name;
         //https://www.npmjs.com/package/simple-encryptor
         user.password = encryptor.encrypt(obj.passw);
+        user.shared = [];
       
-        console.log(user);
         json.users.push(user);
-        console.log(json);
         fs.writeFileSync('users.json',JSON.stringify(json));
         fs.close();
         req.session.user = user;
