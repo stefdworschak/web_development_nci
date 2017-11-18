@@ -95,6 +95,7 @@ router.post('/post/share',function(req,res){
   function appendJSON(obj){
     var sharedBy = 0;
     var sharedWith = 0;
+    var shared = [];
     var AppointmentsFile = fs.readFileSync('Appointments.json', 'utf8');
     var appointments = JSON.parse(AppointmentsFile).appointment;
     var UsersFile = fs.readFileSync('users.json', 'utf8');
@@ -103,6 +104,7 @@ router.post('/post/share',function(req,res){
     for(i = 0; i < users.length;i++){
       if(users[i].username === obj.sharemail) {
         console.log(users[i].username);
+        shared.push({"received":});
         //appointment.push(obj)
         shar
       }

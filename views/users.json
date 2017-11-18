@@ -1,8 +1,0 @@
-{
-  "users":[
-    {"userid":1,"username":"stef.dworschak@gmail.com","first_name":"Stefan","last_name":"Dworschak","password":"9a63a605e19b1876ab823b7ef2f044f01a8e7fcd6d8bd5aefefe5ca3fa34d137362eb65fbdd6a39211af10f873e0597d8MiTu+LyDFK1ONLkhm+BhQ=="},
-    {"userid":2,"username":"mark@gmail.com","first_name":"Mark","last_name":"Gaskin","password":"9a63a605e19b1876ab823b7ef2f044f01a8e7fcd6d8bd5aefefe5ca3fa34d137362eb65fbdd6a39211af10f873e0597d8MiTu+LyDFK1ONLkhm+BhQ=="},
-    {"userid":3,"username":"graham@gmail.com","first_name":"Graham","last_name":"Farell","password":"9a63a605e19b1876ab823b7ef2f044f01a8e7fcd6d8bd5aefefe5ca3fa34d137362eb65fbdd6a39211af10f873e0597d8MiTu+LyDFK1ONLkhm+BhQ=="},
-    {"userid":4,"username":"stefan.dworschak@reflex.at","first_name":"Stefan","last_name":"Dworschak","password":"9a63a605e19b1876ab823b7ef2f044f01a8e7fcd6d8bd5aefefe5ca3fa34d137362eb65fbdd6a39211af10f873e0597d8MiTu+LyDFK1ONLkhm+BhQ=="}
-  ]
-}
