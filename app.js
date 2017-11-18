@@ -104,9 +104,10 @@ router.post('/post/share',function(req,res){
     for(i = 0; i < users.length;i++){
       if(users[i].username === obj.sharemail) {
         console.log(users[i].username);
-        shared.push({"received":});
+        //shared.push({"received":});
         //appointment.push(obj)
-        shar
+                     
+                     
       }
     }
     res.redirect('/');
