@@ -130,7 +130,18 @@
  
    $(document).ready(function() {
       load();
-     // setMarkers();
+   
+     
+      function hideMod(id){
+        $(id).hide();
+         $('body').removeClass('modal-open');
+         var back = $('.modal-backdrop');
+        console.log(back.length)
+         for(i=0;i<back.length;i++){
+           console.log(i)
+           $('.modal-backdrop').remove();
+         }
+      }
 
       $('#searchBtn').on('click',function(){
         setMarkers();
@@ -146,10 +157,24 @@
       });
       
       $('#myModal').blur(()=>{
-        $('#myModal').toggleModal();
-        $(body).removeClass('modal-open');
-        $('.modal-backdrop fade in').hide();
+       hideMod('#myModal');
       })
+     
+     $('#shareBtn').click(()=>{
+       var sharemail = $('input[name=sharemail]').val();
+       $.ajax({
+         url: '/post/share',
+         method: 'post',
+         data: {'sharemail':sharemail}
+       }).done((res)=>{
+         if(res === 'success'){
+           window.location = '/'
+         } else {
+           //Add error handling!!
+           alert('error');
+         }
+       });
+     })
      
      $('#logoutBtn').click(()=>{
           window.location = '/logout';
@@ -157,9 +182,9 @@
      
      var user = <%- JSON.stringify(data.user) %>;
     
-      //$('#userdisplay').text(user.first_name);   
+      //$('#userdisplay').text(user.first_name);  
      
-    });
+});
 
   </script>
 </head>
@@ -211,7 +236,7 @@
           <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-calendar">
 
           </span> Enter New Event </button>
-          <button type="button"  class="btn btn-info btn-md"  data-toggle="modal" data-target="#shareForm">
+          <button type="button" class="btn btn-info btn-md"  data-toggle="modal" data-target="#shareForm">
              <span class="glyphicon glyphicon-share"></span>
          </button>
       </div>
@@ -227,9 +252,7 @@
         </div>
     </div>
       
-<!-- container-fluid end -->      
-</div>
-<!-- container-fluid end -->
+
      
      
   <script>
@@ -374,7 +397,7 @@
                 <input type="email" class="form-control" aria-label="ShareMail" aria-describedby="sizing-addon1" name="sharemail">
             </div>
             <div class="modal-footer">
-              <button type="submit" class="btn btn-primary">Share</button>
+              <button type="button" class="btn btn-primary" id="shareBtn">Share</button>
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
             </div>
           </form>
@@ -383,6 +406,9 @@
       </div>
      </div>
       <!-- Share Form End -->
-
+<!-- container-fluid end -->      
+</div>
+<!-- container-fluid end -->
+          
 </body>
 </html>

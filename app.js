@@ -43,7 +43,7 @@ router.get('/', function(req, res) {
     var jsonParsed = JSON.parse(json);
     
     for(i = jsonParsed.appointment.length-1; i >= 0;i--){
-      if(jsonParsed.appointment[i].who !== req.session.user.userid){
+      if(jsonParsed.appointment[i].who !== req.session.user.userid && req.session.user.shared[0].received.indexOf(jsonParsed.appointment[i].who) == -1){
         jsonParsed.appointment.splice(i,1);
       } 
     }
@@ -93,24 +93,52 @@ router.get('/json/get',function(req,res) {
 router.post('/post/share',function(req,res){
   
   function appendJSON(obj){
-    var sharedBy = 0;
-    var sharedWith = 0;
-    var shared = [];
-    var AppointmentsFile = fs.readFileSync('Appointments.json', 'utf8');
-    var appointments = JSON.parse(AppointmentsFile).appointment;
+
+    var reStr = "success";
     var UsersFile = fs.readFileSync('users.json', 'utf8');
-    var users = JSON.parse(UsersFile).users;
-    console.log(users[0].username);
-    for(i = 0; i < users.length;i++){
-      if(users[i].username === obj.sharemail) {
-        console.log(users[i].username);
-        //shared.push({"received":});
-        //appointment.push(obj)
-                     
-                     
+    var users = JSON.parse(UsersFile);
+    var sharedUserid = 0;
+    var sharedAlready = false;
+    //obj.username to be shared with
+       //req.session.user.userid
+    //first write userid who shared calendar into the person it was shared with
+    console.log(obj.sharemail.toString());
+    for(i = 0; i < users.users.length;i++){
+      
+      if(users.users[i].username.toString() === obj.sharemail.toString()) {
+        var received = users.users[i].shared[0].received;
+        //var recArr = received.split(',');
+        for(k =0; k<received.length; k++){
+          if(received[k] === req.session.user.userid) {
+            sharedAlready = true;
+          }
+        } 
+        
+        if(sharedAlready === false) {
+            users.users[i].shared[0].sent.push(req.session.user.userid);
+            console.log(users.users[i].userid)
+            sharedUserid = users.users[i].userid; 
+        } else {reStr="shared_already"; sharedUserid = -1;}
+      } 
+    }
+    console.log(sharedUserid);
+    
+    for(j = 0; j < users.users.length;j++){
+      if(users.users[j].userid == req.session.user.userid) {
+          if(sharedUserid !== 0) {
+            if(sharedAlready === false) {
+              users.users[j].shared[0].sent.push(sharedUserid);
+            }
+          } else if(sharedUserid === 0) {
+             reStr = "no_user";
+          }
       }
     }
-    res.redirect('/');
+    fs.writeFileSync('users.json',"");
+    fs.writeFileSync('users.json',JSON.stringify(users));
+    res.writeHead(200,{'Content-Type':'text/plain'});
+    res.end(reStr);
+    
   }
   appendJSON(req.body);
   
@@ -139,7 +167,7 @@ router.post('/post/json', function(req, res) {
         if (!err) {
           //Getting the longitude and latitude object and add it to the object
           obj.coords = response.json.results[0].geometry.location;
-
+          obj.who = parseInt(obj.who);
           // Add a new record into country array within the JSON file
           JSONparsed.appointment.push(obj);
 
@@ -175,12 +203,14 @@ router.post('/login',(req,res)=>{
     var users = JSON.parse(file).users;
     var username = req.body.username;
     var password = req.body.password;
-
+    
     for(i=0;i<users.length;i++){
         if(users[i].username == username) {
           if(encryptor.decrypt(users[i].password) == password) {
+            console.log("login");
             loggedin=true;
             delete users[i].password;
+            console.log("delet pw");
             var details = users[i];
             console.log(details);
             req.session.user=details;
@@ -212,10 +242,11 @@ router.post('/register',(req,res)=>{
         //https://www.npmjs.com/package/simple-encryptor
         user.password = encryptor.encrypt(obj.passw);
         user.shared = [];
+        user.shared.push({"received":[], "sent":[]});
       
         json.users.push(user);
         fs.writeFileSync('users.json',JSON.stringify(json));
-        fs.close();
+        
         req.session.user = user;
         res.redirect('/');
     }
