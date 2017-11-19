@@ -107,8 +107,10 @@ router.post('/post/share',function(req,res){
       
       if(users.users[i].username.toString() === obj.sharemail.toString()) {
         var received = users.users[i].shared[0].received;
-        //var recArr = received.split(',');
+        console.log('Received'+users.users[i].shared[0].received.toString());
         for(k =0; k<received.length; k++){
+          console.log('Received'+received[k]);
+          conosl.log('Userid'+req.session.user.userid);
           if(received[k] === req.session.user.userid) {
             sharedAlready = true;
           }
