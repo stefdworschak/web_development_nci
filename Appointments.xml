@@ -309,4 +309,15 @@
             <lng>-6.2779827</lng>
         </coords>
     </appointment>
+    <appointment>
+        <date>2018-01-19</date>
+        <time>01:58</time>
+        <what>Holiday</what>
+        <where>DCU, dublin</where>
+        <who>2</who>
+        <coords>
+            <lat>53.385062</lat>
+            <lng>-6.2567865</lng>
+        </coords>
+    </appointment>
 </appointments>

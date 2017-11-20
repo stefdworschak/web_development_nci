@@ -52,99 +52,20 @@ router.get('/', function(req, res) {
     res.render('index', {'data': {'cal':jsonParsed,'user':req.session.user}});
   }
 });
+/*
+var getXml = require('./custom_modules/get-xml');
+router.get('/get/html', getXml.controller);
 
-// HTML produced by XSL Transformation
-router.get('/get/html', function(req, res) {
+var getJson = require('.custom_modules/get-json');
+router.get('/get/json', getJson.controller);*/
 
-    res.writeHead(200, { 'Content-Type': 'text/html' });
+var getData = require('./custom_modules/get');
 
-    var docSource = fs.readFileSync('Appointments.xml', 'utf8');
-    var stylesheetSource = fs.readFileSync('Appointments.xsl', 'utf8');
+router.get('/get/html', getData.jsonCtrl);
+router.get('/get/html', getData.xmlCtrl);
 
-    var doc = libxslt.libxmljs.parseXml(docSource);
-    var stylesheet = libxslt.parse(stylesheetSource);
-
-    var result = stylesheet.apply(doc);
-
-    res.end(result.toString());
-
-});
-
-router.get('/get/json', function(req, res) {
-
-    res.writeHead(200, { 'Content-Type': 'application/json' });
-
-    var JSONfile = fs.readFileSync('Appointments.json', 'utf8');
-    var JSONparsed = JSON.parse(JSONfile);
-   
-    res.end(JSON.stringify(JSONparsed));
-
-});
-
-router.get('/json/get',function(req,res) {
-  
-  res.writeHead(200,{ 'Content-Type': 'application/json' });
-  var json = fs.readFileSync('Teams.json','utf8');
-  var jsonParsed = JSON.parse(json);
-  
-  res.end(JSON.stringify(jsonParsed));
-  
-})
-router.post('/post/share',function(req,res){
-  
-  function appendJSON(obj){
-
-    var reStr = "success";
-    var UsersFile = fs.readFileSync('users.json', 'utf8');
-    var users = JSON.parse(UsersFile);
-    var sharedUserid = 0;
-    var sharedAlready = false;
-    //obj.username to be shared with
-       //req.session.user.userid
-    //first write userid who shared calendar into the person it was shared with
-    console.log(obj.sharemail.toString());
-    for(i = 0; i < users.users.length;i++){
-      
-      if(users.users[i].username.toString() === obj.sharemail.toString()) {
-        var received = users.users[i].shared[0].received;
-        console.log('Received'+users.users[i].shared[0].received.toString());
-        for(k =0; k<received.length; k++){
-          console.log('Received'+received[k]);
-          conosl.log('Userid'+req.session.user.userid);
-          if(received[k] === req.session.user.userid) {
-            sharedAlready = true;
-          }
-        } 
-        
-        if(sharedAlready === false) {
-            users.users[i].shared[0].sent.push(req.session.user.userid);
-            console.log(users.users[i].userid)
-            sharedUserid = users.users[i].userid; 
-        } else {reStr="shared_already"; sharedUserid = -1;}
-      } 
-    }
-    console.log(sharedUserid);
-    
-    for(j = 0; j < users.users.length;j++){
-      if(users.users[j].userid == req.session.user.userid) {
-          if(sharedUserid !== 0) {
-            if(sharedAlready === false) {
-              users.users[j].shared[0].sent.push(sharedUserid);
-            }
-          } else if(sharedUserid === 0) {
-             reStr = "no_user";
-          }
-      }
-    }
-    fs.writeFileSync('users.json',"");
-    fs.writeFileSync('users.json',JSON.stringify(users));
-    res.writeHead(200,{'Content-Type':'text/plain'});
-    res.end(reStr);
-    
-  }
-  appendJSON(req.body);
-  
-})
+var postShare = require('./custom_modules/post-share');
+router.post('/post/share',postShare.controller);
 
 
 
@@ -199,7 +120,7 @@ router.post('/post/json', function(req, res) {
 });
 
 router.post('/login',(req,res)=>{
-    console.log(true);
+   
     var file = fs.readFileSync("users.json","utf-8");
     var loggedin = false;
     var users = JSON.parse(file).users;
@@ -209,12 +130,11 @@ router.post('/login',(req,res)=>{
     for(i=0;i<users.length;i++){
         if(users[i].username == username) {
           if(encryptor.decrypt(users[i].password) == password) {
-            console.log("login");
             loggedin=true;
             delete users[i].password;
-            console.log("delet pw");
             var details = users[i];
-            console.log(details);
+            // Display loggedin user details
+            // console.log(details);
             req.session.user=details;
             res.redirect('/?q=loggedin');
           }
