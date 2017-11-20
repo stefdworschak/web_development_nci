@@ -169,16 +169,19 @@
       }
 
       $('#searchBtn').on('click',function(){
-        setMarkers();
+        var userid = <%- data.user.userid %>
+        setMarkers(userid);
       });
       $('input[name=search]').keyup((evt)=>{
           if(evt.key === 'Enter') {
-            setMarkers();
+            var userid = <%- data.user.userid %>
+            setMarkers(userid);
           }
       });
       $('#resetBtn').on('click',function(){
         $('input[name=search]').val('');
-        setMarkers();
+        var userid = <%- data.user.userid %>
+        setMarkers(1);
       });
       
       $('#myModal').blur(()=>{

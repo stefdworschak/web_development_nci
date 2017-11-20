@@ -61,7 +61,7 @@ router.get('/get/json', getJson.controller);*/
 
 var getData = require('./custom_modules/get');
 
-router.get('/get/html', getData.jsonCtrl);
+router.post('/get/json', getData.jsonCtrl);
 router.get('/get/html', getData.xmlCtrl);
 
 var postShare = require('./custom_modules/post-share');

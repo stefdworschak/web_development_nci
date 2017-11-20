@@ -10,7 +10,6 @@ function load() {
 
 function filter_JSON(json, keywords) {
   var count;
-
   for(i=json.length-1;i >=0 ;i--) {
     //https://stackoverflow.com/questions/7866275/access-non-numeric-object-properties-by-index
     count = 0;
@@ -30,30 +29,19 @@ function filter_JSON(json, keywords) {
   return json;
 }
 
-function setMarkers(){
+function setMarkers(userid){
   $.ajax({
     url: "/get/json",
-    cache: false,
-    success: function(json) {
-      json=JSON.parse(JSON.stringify(json.appointment));
+    data: {'userid':userid},
+    method: 'POST',
+    cache: false
+  }).done((resp)=>{
+      var json = JSON.parse(JSON.stringify(resp)).appointment;
       home={lat: 53.33873579999999,lng: -6.2385966};
       var keywords = $('input[name=search]').val().trim().split(',').join(' ').split(' ');
-      console.log(keywords)
       if(keywords.toString() !== '') {
-        console.log(true);
         json=filter_JSON(json, keywords);
-        console.log(json);
-      } else {
-        //json=JSON.stringify(json);
-        //console.log(json);
-      }
-      
+      }       
       initMap(home,json);
-    }
-  });
-  
-  function settingMarkers(){
-        
-  }
-  
+  })
 }
