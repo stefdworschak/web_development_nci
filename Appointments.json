@@ -318,6 +318,17 @@
                 "lat": 53.385062,
                 "lng": -6.2567865
             }
+        },
+        {
+            "date": "2017-11-22",
+            "time": "16:00",
+            "what": "Picknick",
+            "where": "Phoenix Park, Dublin",
+            "who": 1,
+            "coords": {
+                "lat": 53.3558823,
+                "lng": -6.3298133
+            }
         }
     ]
 }

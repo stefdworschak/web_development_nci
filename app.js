@@ -43,8 +43,21 @@ router.get('/', function(req, res) {
     var jsonParsed = JSON.parse(json);
     
     for(i = jsonParsed.appointment.length-1; i >= 0;i--){
-      if(jsonParsed.appointment[i].who !== req.session.user.userid && req.session.user.shared[0].received.indexOf(jsonParsed.appointment[i].who) == -1){
-        jsonParsed.appointment.splice(i,1);
+      if(jsonParsed.appointment[i].who !== req.session.user.userid){  
+        var shared = 0;
+        for(j = 0; j < req.session.user.shared[0].received.length; j++){    
+         // console.log(req.session.user.shared[0].received[j]);
+          if(req.session.user.shared[0].received[j] === jsonParsed.appointment[i].who){
+            //console.log('Received'+req.session.user.shared[0].received[j]);
+            shared = 1;
+          }
+        }  
+        if(shared !== 1) {
+          // console.log('splice');
+          jsonParsed.appointment.splice(i,1);
+        } else {
+          console.log('dont splice '+jsonParsed.appointment[i].who);
+        }
       } 
     }
     var jsonStringified = JSON.stringify(jsonParsed);

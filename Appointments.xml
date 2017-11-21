@@ -296,7 +296,6 @@
             <lat>53.3474963</lat>
             <lng>-6.2285078</lng>
         </coords>
-        <userid>null</userid>
     </appointment>
     <appointment>
         <date>2017-11-25</date>
@@ -318,6 +317,17 @@
         <coords>
             <lat>53.385062</lat>
             <lng>-6.2567865</lng>
+        </coords>
+    </appointment>
+    <appointment>
+        <date>2017-11-22</date>
+        <time>16:00</time>
+        <what>Picknick</what>
+        <where>Phoenix Park, Dublin</where>
+        <who>1</who>
+        <coords>
+            <lat>53.3558823</lat>
+            <lng>-6.3298133</lng>
         </coords>
     </appointment>
 </appointments>

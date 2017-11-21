@@ -5,12 +5,13 @@ module.exports = function(req, res) {
     
     var JSONfile = fs.readFileSync('Appointments.json', 'utf8');
     var JSONparsed = JSON.parse(JSONfile);
-    //console.log(typeof userid);
+    
     for(i=JSONparsed.appointment.length-1;i>=0; i--) {
       if(JSONparsed.appointment[i].who !== userid) {
         JSONparsed.appointment.splice(i,1);
       }
     }
+    console.log(JSONparsed.length)
     res.end(JSON.stringify(JSONparsed));
 
 }
