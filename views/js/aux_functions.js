@@ -4,6 +4,17 @@ function load() {
     cache: false,
     success: function(html) {
       $("#results").append(html);
+      $('#appointmentsTable tbody tr').click((event)=>{
+        var $el = event.target.parentNode;
+        //$(this).removeClass('selected');
+        $('.selected').removeClass('selected');
+        $el.classList.add('selected');
+        
+       // var $row = $(this).attr('id');
+      //  var $td = 'thisTd'+$row.replace("thisTr","");
+       // $($td).unhide();
+        
+      })
     }
   });
 }

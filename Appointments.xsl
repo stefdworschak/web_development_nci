@@ -1,32 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:template match="/">
-		<html>
-			<head>
-				<script>
-				<![CDATA[
-				//ADD SCRIPT HERE.
-				document.onload = function(){
-										var els=document.getElementByClass("deletes");
-										for(i=0; i < els.children; i++){
-
-										}
-				}
-				]]>
-				</script>
-				<style>
-				  table {
-				    border-collapse: collapse;
-						border:1px solid darkgray;
-				  }	
-				  th {
-				    font-weight: bold;
-				  }
-			  </style>
-			</head>
-			<body>
-				<table>
-					<tr>
+				<table id="appointmentsTable">
+					<tr id="thisTr{position()}">
 						<th>Date</th>
 						<th>Time</th>
 						<th>Description</th>
@@ -51,15 +27,13 @@
 								<td>
 									<xsl:value-of select="where"/>
 								</td>
-								<td>
-									<input type="image" src="https://upload.wikimedia.org/wikipedia/commons/a/a7/Trash_Can.svg" style="height:20px;margin-left:2px margin-right:2px" class="deletes" id="delete{id}">
-											<xsl:attribute name="onclick">deleteElement(event)</xsl:attribute>
+								<td id="thisTd{position()}" style="display:none;">
+									<input type="image" src="https://upload.wikimedia.org/wikipedia/commons/a/a7/Trash_Can.svg" style="height:20px;margin-left:2px margin-right:2px" class="deletes" id="delete{position()}">
+											<!--<xsl:attribute name="onclick">deleteElement(event)</xsl:attribute>-->
 									</input>
 								</td>
 							</tr>
 					</xsl:for-each>
 				</table>
-			</body>
-		</html>
 	</xsl:template>
 </xsl:stylesheet>
