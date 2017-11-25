@@ -68,7 +68,7 @@
       width:30%;
       height:65%;
       margin-top:10px;
-      border-style:solid;
+      
       
     }
     .container-fluid {
@@ -91,7 +91,7 @@
         border:1px solid gray;
           }
   
-   .modal, .Update, .modal-dialog {
+   .modal, .Update, .modal-dialog, #DataModal {
      float:centre;
      margin-left:17%;
       width:65%;
@@ -182,13 +182,6 @@
      var user = <%- JSON.stringify(data.user) %>;
     console.log(user);
       //$('#userdisplay').text(user.first_name);  
-     $("button[name=delete1]").click(()=>{
-       console.log(true);
-       console.log($(this).id);
-     });
-     function deleteElement(){
-       console.log(this)
-     }
      
 });
 
@@ -260,14 +253,26 @@
          </button>
       </div>
     </div>
-      
+     
+           <!-- data modal --> 
+          <div class="col-sm-2 col-md-2 pull-right"> 
+          
+          <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#DataModal"><span class="glyphicon glyphicon-list-alt">
+
+          </span> View Entries </button>
+          <button type="button" class="btn btn-info btn-md"  data-toggle="modal" data-target="#shareForm">
+             <span class="glyphicon glyphicon-share"></span>
+         </button>
+      </div>
+    </div>
+          
+          
     <div class="row">
         <div class="col-md-12">
           
           <div id="map"></div>
 
-           <div id="results"></div>      
-
+          
         </div>
     </div>
       
@@ -365,6 +370,7 @@
       <%- include('includes/modals/enterEvent-modal') %>
       <%- include('includes/modals/shareCalendar-modal') %>
       <%- include('includes/modals/changePw-modal') %>
+      <%- include('includes/modals/Data-modal') %>    
           
           
 <!-- container-fluid end -->      
