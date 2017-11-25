@@ -6,12 +6,8 @@
 				<style>
 				  table {
 				    border-collapse: collapse;
-				  }
-				  td, th {
-				    border: 1px solid #999;
-				    padding: 0.5rem;
-				    text-align: left;
-				  }
+						border:1px solid darkgray;
+				  }	
 				  th {
 				    font-weight: bold;
 				  }
@@ -25,6 +21,7 @@
 						<th>Description</th>
 						<th>Entered By</th>
 						<th>Address</th>
+						<th> </th>
 					</tr>
 					<xsl:for-each select="appointments/appointment">
 							<tr>
@@ -42,6 +39,10 @@
 								</td>
 								<td>
 									<xsl:value-of select="where"/>
+								</td>
+								<td>
+									<button><span class="glyphicon glyphicon-trash">
+									</span></button>
 								</td>
 							</tr>
 					</xsl:for-each>

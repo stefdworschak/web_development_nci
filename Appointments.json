@@ -371,6 +371,18 @@
                 "lat": 53.3633833,
                 "lng": -6.25786
             }
+        },
+        {
+            "date": "2017-11-21",
+            "time": "10:00",
+            "what": "University",
+            "who": 1,
+            "full_name": "Stefan Dworschak",
+            "where": "Trinity College, Dublin",
+            "coords": {
+                "lat": 53.3437935,
+                "lng": -6.254571599999999
+            }
         }
     ]
 }

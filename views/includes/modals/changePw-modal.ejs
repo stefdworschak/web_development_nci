@@ -1,0 +1,38 @@
+       <!-- Change Password Form Start -->
+      <div class="modal" tabindex="-1" role="dialog" id="changePwForm">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4><span class="glyphicon glyphicon-share">&nbsp;</span>Change Password:</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+           <!-- <form enctype="application/x-www-form-urlencoded" method="post" action="/post/share" id="shareForm">-->
+              <div class="alert alert-danger" id="change-pw-error">
+              </div>
+              <div class="input-group input-group-md">
+                <span class="input-group-addon" id="sizing-addon1">Current Password</span>
+                <input type="password" class="form-control" aria-label="CurrentPassword" aria-describedby="sizing-addon1" name="curPw">
+              </div>
+            <br />
+              <div class="input-group input-group-md">
+                <span class="input-group-addon" id="sizing-addon1">New Password&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <input type="password" class="form-control" aria-label="NewPassword" aria-describedby="sizing-addon1" name="newPw">
+              </div>
+              <br />  
+              <div class="input-group input-group-md">
+                <span class="input-group-addon" id="sizing-addon1">Repeat Password</span>
+                <input type="password" class="form-control" aria-label="RepeatPassword" aria-describedby="sizing-addon1" name="repeatPw">
+              </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" id="changePwBtn">Change Password</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            </div>
+          <!--</form>-->
+          </div>
+        </div>
+      </div>
+     </div>
+      <!-- Change Password Form End -->

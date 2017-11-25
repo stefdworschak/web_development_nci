@@ -372,4 +372,16 @@
             <lng>-6.25786</lng>
         </coords>
     </appointment>
+    <appointment>
+        <date>2017-11-21</date>
+        <time>10:00</time>
+        <what>University</what>
+        <who>1</who>
+        <full_name>Stefan Dworschak</full_name>
+        <where>Trinity College, Dublin</where>
+        <coords>
+            <lat>53.3437935</lat>
+            <lng>-6.254571599999999</lng>
+        </coords>
+    </appointment>
 </appointments>

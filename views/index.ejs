@@ -132,81 +132,13 @@
   <script src="/js/jquery.min.js"></script>
   <script src="/js/bootstrap.min.js"></script>
   <script src="/js/aux_functions.js"></script>
+  <script src="/js/index_functions.js"></script>
   <script>
     var api_key = "AIzaSyBF2VwTjDiUFzvdA3IuQw_8H5JYq803bHs";
     var marker;
  
    $(document).ready(function() {
       load();
-      
-     function shareCal(){
-       var sharemail = $('input[name=sharemail]').val();
-       $.ajax({
-         url: '/post/share',
-         method: 'post',
-         data: {'sharemail':sharemail}
-       }).done((res)=>{
-         if(res === 'success'){
-           console.log('success');
-           window.location = '/'
-         } else {
-           //Add error handling!!
-           $('#share-error').css('display','block');
-           $('#share-error').text(res);
-           $('shareForm').on('hidden.bs.modal', function () {
-                $('#share-error').css('display','none');
-            })
-           $('#share-error').blur(()=>{$('#share-error').css('display','block')})
-           
-           console.log("error"+res);
-           
-         }
-       });
-     }
-     
-     function changePw(in1,in2,in3){
-       var curPassword = $('input[name=cur-passwort]').select();
-       var newPassword = $('input[name=passwort]').val();
-       var repeatPassword = $('input[name=repeat-passwort]').val();
-       console.log("Current:"+in1.value);
-       console.log("Current:"+newPassword);
-       console.log("Current:"+repeatPassword);
-       //if(newPassword == repeatPassword)
-       /*
-       $.ajax({
-         url: '/post/share',
-         method: 'post',
-         data: {'sharemail':sharemail}
-       }).done((res)=>{
-         if(res === 'success'){
-           console.log('success');
-           window.location = '/'
-         } else {
-           //Add error handling!!
-           $('#share-error').css('display','block');
-           $('#share-error').text(res);
-           $('shareForm').on('hidden.bs.modal', function () {
-                $('#share-error').css('display','none');
-            })
-           $('#share-error').blur(()=>{$('#share-error').css('display','block')})
-           
-           console.log("error"+res);
-           
-         }
-       });
-       */
-     }
-      
-      function hideMod(id){
-        $(id).hide();
-         $('body').removeClass('modal-open');
-         var back = $('.modal-backdrop');
-        console.log(back.length)
-         for(i=0;i<back.length;i++){
-           console.log(i)
-           $('.modal-backdrop').remove();
-         }
-      }
 
       $('#searchBtn').on('click',function(){
         var userid = <%- data.user.userid %>
@@ -224,8 +156,8 @@
         setMarkers(1);
       });
       
-      $('#myModal').blur(()=>{
-       hideMod('#myModal');
+      $('#enterEventModal').blur(()=>{
+       hideMod('#enterEventModal');
       })
      
      $('input[name=sharemail]').keyup((evt)=>{
@@ -243,7 +175,9 @@
       })
      
      $('.dropdown-toggle').dropdown()
-     $('#changePwBtn').click();
+     $('#changePwBtn').click(()=>{
+       changePw();
+     });
      
      var user = <%- JSON.stringify(data.user) %>;
     console.log(user);
@@ -256,8 +190,8 @@
 
 <body>
   
-  <!-- container-fluid start -->
   <div class="container-fluid">
+  <!-- container-fluid start -->
     
     <!-- nav start -->
     <div class="row myNav"> 
@@ -311,7 +245,7 @@
        <!-- col width 2 start --> 
        <div class="col-sm-2 col-md-2 pull-right"> 
           <!-- Search button -->
-          <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-calendar">
+          <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#enterEventModal"><span class="glyphicon glyphicon-calendar">
 
           </span> Enter New Event </button>
           <button type="button" class="btn btn-info btn-md"  data-toggle="modal" data-target="#shareForm">
@@ -420,113 +354,10 @@
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBF2VwTjDiUFzvdA3IuQw_8H5JYq803bHs&callback=initMap">
       </script>
 
-      <!-- Partial code taken from W3schools.com. (2017). Bootstrap Modals. [online] Available at: https://www.w3schools.com/bootstrap/bootstrap_modal.asp. -->
-      <!-- Modal -->
-      <div class="modal" role="dialog" id="myModal">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button><h4 class="modal-title">Enter New Event</h4>
-            </div>
-            <div class="modal-body">
-                <form enctype='application/json' action="/post/json" method="post" id="enterForm">
-                    <h4><span class="glyphicon glyphicon-calendar"></span> Enter New Event:</h4>
-                    <div class="field">
-                        <input type="date" name="date" placeholder="Date" required />
-                    </div>
-                    <div class="field">
-                        <input type="time" name="time" placeholder="Time" required />
-                    </div>
-                    <div class="field">
-                        <input type="text" name="what" placeholder="Short Description" required />
-                    </div>
-                        <input type="hidden" name="who" value="<%= data.user.userid %>" required />
-                         <input type="hidden" name="full_name" value="<%= data.user.first_name + ' ' + data.user.last_name %>" required />
-                    <div class="field">
-                        <input type="text" name="where" placeholder="Address" required />
-                    </div>
-                    <div class="field">
-                        
-                        <input type="hidden" name="coords" />
-                       <button type="submit">Submit</button>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-          </div>
-        </div>
-      </div> 
-      <!-- End Modal -->
-
-      <!-- Share Form Start -->
-      <div class="modal" tabindex="-1" role="dialog" id="shareForm">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4><span class="glyphicon glyphicon-share">&nbsp;</span>Enter User Email To Share Calendar:</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-           <!-- <form enctype="application/x-www-form-urlencoded" method="post" action="/post/share" id="shareForm">-->
-              <div class="alert alert-danger" id="share-error">
-              </div>
-              <div class="input-group input-group-md">
-                <span class="input-group-addon" id="sizing-addon1">@</span>
-                <input type="email" class="form-control" aria-label="ShareMail" aria-describedby="sizing-addon1" name="sharemail">
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-primary" id="shareBtn">Share</button>
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-            </div>
-          <!--</form>-->
-          </div>
-        </div>
-      </div>
-     </div>
-      <!-- Share Form End -->
- 
-       <!-- Change Password Form Start -->
-      <div class="modal" tabindex="-1" role="dialog" id="changePwForm">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4><span class="glyphicon glyphicon-share">&nbsp;</span>Change Password:</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-           <!-- <form enctype="application/x-www-form-urlencoded" method="post" action="/post/share" id="shareForm">-->
-              <div class="alert alert-danger" id="change-pw-error">
-              </div>
-              <div class="input-group input-group-md">
-                <span class="input-group-addon" id="sizing-addon1">Current Password</span>
-                <input type="password" class="form-control" aria-label="CurrentPassword" aria-describedby="sizing-addon1" name="cur-password">
-              </div>
-            <br />
-              <div class="input-group input-group-md">
-                <span class="input-group-addon" id="sizing-addon1">New Password&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                <input type="password" class="form-control" aria-label="NewPassword" aria-describedby="sizing-addon1" name="password">
-              </div>
-              <br />  
-              <div class="input-group input-group-md">
-                <span class="input-group-addon" id="sizing-addon1">Repeat Password</span>
-                <input type="password" class="form-control" aria-label="RepeatPassword" aria-describedby="sizing-addon1" name="repeat-password">
-              </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-primary" id="changePwBtn">Change Password</button>
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-            </div>
-          <!--</form>-->
-          </div>
-        </div>
-      </div>
-     </div>
-      <!-- Change Password Form End -->
+      
+      <%- include('includes/modals/enterEvent-modal') %>
+      <%- include('includes/modals/shareCalendar-modal') %>
+      <%- include('includes/modals/changePw-modal') %>
           
           
 <!-- container-fluid end -->      

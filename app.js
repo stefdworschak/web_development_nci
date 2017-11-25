@@ -34,141 +34,22 @@ router.use(session({
 }));
 
 // GET request to dislay index.html located inside /views folder
-router.get('/', function(req, res) {
-  
-  if(!req.session.user) {
-    res.render('login');
-  } else {
-    var json = fs.readFileSync('Appointments.json','utf8');
-    var jsonParsed = JSON.parse(json);
-    
-    var filter = require('./custom_modules/filter');
-    jsonParsed = filter.filter(jsonParsed, req.session.user);
-    
-    var jsonStringified = JSON.stringify(jsonParsed);
-    
-    res.render('index', {'data': {'cal':jsonParsed,'user':req.session.user}});
-  }
-});
+var _get = require('./custom_modules/get');
 
-var getData = require('./custom_modules/get');
-
-router.post('/get/json', getData.jsonCtrl);
-router.get('/get/html', getData.xmlCtrl);
-
-var postShare = require('./custom_modules/post-share');
-router.post('/post/share',postShare.controller);
+router.get('/', _get.showIndex);
+router.post('/get/json', _get.jsonCtrl);
+router.get('/get/html', _get.xmlCtrl);
+router.get('/logout',_get.logoutCtrl);
 
 
+var _post = require('./custom_modules/post');
 
+router.post('/login',_post.loginCtrl);
+router.post('/register',_post.registerCtrl);
 // POST request to add to JSON & XML files
-router.post('/post/json', function(req, res) {
-  
-  // Function to read in a JSON file, add to it & convert to XML
-  function appendJSON(obj) {
-
-    // Read in a JSON file
-    var JSONfile = fs.readFileSync('Appointments.json', 'utf8');
-
-    // Parse the JSON file in order to be able to edit it
-    var JSONparsed = JSON.parse(JSONfile);
-
-    //Geolocation
-    //var address = obj.where.toString().split(' ').join('+');
-
-    googleMapsClient.geocode({
-        address: obj.where
-    }, function(err, response) {
-        if (!err) {
-          //Getting the longitude and latitude object and add it to the object
-          obj.coords = response.json.results[0].geometry.location;
-          obj.who = parseInt(obj.who);
-          // Add a new record into country array within the JSON file
-          JSONparsed.appointment.push(obj);
-
-          // Beautify the resulting JSON file
-          var JSONformated = JSON.stringify(JSONparsed, null, 4);
-
-          // Write the updated JSON file back to the system
-          fs.writeFileSync('Appointments.json', JSONformated);
-
-          // Convert the updated JSON file to XML
-          var XMLformated = js2xmlparser.parse("appointments", JSON.parse(JSONformated));
-
-          // Write the resulting XML back to the system
-          fs.writeFileSync('Appointments.xml', XMLformated);
-
-        } else {console.log('Error:'+err)}
-        return res.redirect('/');
-    });
-  }
-  // Call appendJSON function and pass in body of the current POST request
-  if(req.body.date.length > 0 && req.body.time.length > 0 && req.body.what.length > 0 && req.body.who.length > 0
-      && req.body.where.length > 0) {
-    appendJSON(req.body);
-  } else {console.log("Details missing: "+req.body.date.length+", "+req.body.time.length+", "+req.body.what.length
-  +", "+req.body.who.length+", "+req.body.where.length+", "+req.body.coords.length);}
-  // Re-direct the browser back to the page, where the POST request came from
-});
-
-router.post('/login',(req,res)=>{
-   
-    var file = fs.readFileSync("users.json","utf-8");
-    var loggedin = false;
-    console.log(file[4098]+file[4099]+file[4100]+file[4101]+file[4102]+file[4103]+file[4104]+file[4105])
-    var users = JSON.parse(file).users;
-    var username = req.body.username;
-    var password = req.body.password;
-    for(i=0;i<users.length;i++){
-        if(users[i].username == username) {
-          if(encryptor.decrypt(users[i].password) == password) {
-            loggedin=true;
-            delete users[i].password;
-            var details = users[i];
-            // Display loggedin user details
-            // console.log(details);
-            req.session.user=details;
-            res.redirect('/?q=loggedin');
-          }
-        }
-    }
-    if(!loggedin) {res.redirect('/?q=login-error');}
-
-});
-
-router.get('/logout',(req,res)=>{
-    req.session.destroy((err)=>{
-
-    });
-    res.redirect('/')
-})
-
-router.post('/register',(req,res)=>{
-
-    function writeToFile(obj) {
-        var json =JSON.parse(fs.readFileSync('users.json','utf-8'));
-
-        var user = {};
-        user.userid = json.users.length+1;
-        user.username = obj.username;
-        user.first_name = obj.first_name;
-        user.last_name = obj.last_name;
-        //https://www.npmjs.com/package/simple-encryptor
-        user.password = encryptor.encrypt(obj.passw);
-        user.shared = [];
-        user.shared.push({"received":[], "sent":[]});
-      
-        json.users.push(user);
-        fs.writeFileSync('users.json',JSON.stringify(json));
-        
-        req.session.user = user;
-        res.redirect('/');
-    }
-
-    writeToFile(req.body);
-
-})
-
+router.post('/post/json', _post.createEvtCtrl);
+router.post('/post/share', _post.shareCalCtrl);
+router.post('/post/change_password', _post.changePwCtrl);
 
 server.listen(process.env.PORT || 3000, process.env.IP || "0.0.0.0", function() {
   var addr = server.address();

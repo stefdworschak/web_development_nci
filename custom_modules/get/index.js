@@ -1,4 +1,6 @@
 module.exports = {
    jsonCtrl:require('./jsonCtrl'),
-   xmlCtrl:require('./xmlCtrl')
+   xmlCtrl:require('./xmlCtrl'),
+   showIndex: require('./showIndexController'),
+   logoutCtrl: require('./logoutController')
 }
