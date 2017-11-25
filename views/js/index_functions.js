@@ -65,3 +65,28 @@ function shareCal(){
            $('.modal-backdrop').remove();
          }
       }
+
+  function deleteRecord(id){
+    $.ajax({
+             url: '/post/delete_record',
+             method: 'post',
+             data: {'record_id':id}
+           }).done((res)=>{
+             if(res === 'success'){
+               console.log('success');
+               window.location = '/'
+             } else {
+               //Add error handling!!
+               /*
+               $('#change-pw-error').css('display','block');
+               $('#change-pw-error').text(res);
+               $('changePwForm').on('hidden.bs.modal', function () {
+                    $('#share-error').css('display','none');
+                })
+               $('#change-pw-error').blur(()=>{$('#change-pw-error').css('display','block')})
+               */
+               console.log("error"+res);
+                
+             }
+           });
+  }

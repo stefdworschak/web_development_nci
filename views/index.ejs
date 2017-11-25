@@ -184,7 +184,11 @@
       //$('#userdisplay').text(user.first_name);  
      
 });
-
+   function deleteElement(event){
+       var el=event.target.id;
+       var record=Number(el.replace("delete",""));
+       deleteRecord(record);
+    }
   </script>
 </head>
 

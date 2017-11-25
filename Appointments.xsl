@@ -52,9 +52,9 @@
 									<xsl:value-of select="where"/>
 								</td>
 								<td>
-									<button class="deletes" id="delete{id}"><span class="glyphicon glyphicon-trash">
-									</span>               
-									</button>
+									<input type="image" src="https://upload.wikimedia.org/wikipedia/commons/a/a7/Trash_Can.svg" style="height:20px;margin-left:2px margin-right:2px" class="deletes" id="delete{id}">
+											<xsl:attribute name="onclick">deleteElement(event)</xsl:attribute>
+									</input>
 								</td>
 							</tr>
 					</xsl:for-each>
