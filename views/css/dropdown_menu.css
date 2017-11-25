@@ -1,0 +1,27 @@
+#dropMenu .dropdown-menu{
+  min-width:200px;
+  left:-160px;
+}
+
+.dropdown-item {
+  width:100%;
+  display:block;
+  background:#FFFFFF;
+  padding-top:5px;
+  padding-bottom:5px;
+  padding-left:20px;
+  padding-right:20px;
+  text-decoration:none;
+  color: #333;
+}
+
+.dropdown-item:hover {
+  display:block;
+  background:#F0F0F0;
+  padding-top:5px;
+  padding-bottom:5px;
+  padding-left:20px;
+  padding-right:20px;
+  text-decoration:none;
+  color: #333;
+}

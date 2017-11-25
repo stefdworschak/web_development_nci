@@ -1,4 +1,9 @@
 // HTML produced by XSL Transformation
+//https://www.npmjs.com/package/xml2js
+var parseString = require('xml2js').parseString,
+    filter = require('./../filter'),
+    js2xmlparser = require('js2xmlparser');
+
 module.exports = function(req, res) {
     
     var fs=require('fs'),
@@ -10,10 +15,19 @@ module.exports = function(req, res) {
     var stylesheetSource = fs.readFileSync('Appointments.xsl', 'utf8');
 
     var doc = libxslt.libxmljs.parseXml(docSource);
-    var stylesheet = libxslt.parse(stylesheetSource);
-
-    var result = stylesheet.apply(doc);
-
-    res.end(result.toString());
+    var json = parseString(doc, function (err, response) {
+        var json = JSON.parse(JSON.stringify(response.appointments));
+        
+        json = filter.filter(json, req.session.user);
+        
+        var XMLformated = js2xmlparser.parse("appointments", json);
+        
+        var stylesheet = libxslt.parse(stylesheetSource);
+    
+        var result = stylesheet.apply(doc);
+        //console.log(result.toString());
+        res.end(result.toString());
+      
+    });
 
 };

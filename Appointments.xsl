@@ -38,7 +38,7 @@
 									<xsl:value-of select="what"/>
 								</td>
 								<td>
-									<xsl:value-of select="who"/>
+									<xsl:value-of select="full_name"/>
 								</td>
 								<td>
 									<xsl:value-of select="where"/>

@@ -42,35 +42,14 @@ router.get('/', function(req, res) {
     var json = fs.readFileSync('Appointments.json','utf8');
     var jsonParsed = JSON.parse(json);
     
-    for(i = jsonParsed.appointment.length-1; i >= 0;i--){
-      if(jsonParsed.appointment[i].who !== req.session.user.userid){  
-        var shared = 0;
-        for(j = 0; j < req.session.user.shared[0].received.length; j++){    
-         // console.log(req.session.user.shared[0].received[j]);
-          if(req.session.user.shared[0].received[j] === jsonParsed.appointment[i].who){
-            //console.log('Received'+req.session.user.shared[0].received[j]);
-            shared = 1;
-          }
-        }  
-        if(shared !== 1) {
-          // console.log('splice');
-          jsonParsed.appointment.splice(i,1);
-        } else {
-          console.log('dont splice '+jsonParsed.appointment[i].who);
-        }
-      } 
-    }
+    var filter = require('./custom_modules/filter');
+    jsonParsed = filter.filter(jsonParsed, req.session.user);
+    
     var jsonStringified = JSON.stringify(jsonParsed);
     
     res.render('index', {'data': {'cal':jsonParsed,'user':req.session.user}});
   }
 });
-/*
-var getXml = require('./custom_modules/get-xml');
-router.get('/get/html', getXml.controller);
-
-var getJson = require('.custom_modules/get-json');
-router.get('/get/json', getJson.controller);*/
 
 var getData = require('./custom_modules/get');
 
@@ -136,10 +115,10 @@ router.post('/login',(req,res)=>{
    
     var file = fs.readFileSync("users.json","utf-8");
     var loggedin = false;
+    console.log(file[4098]+file[4099]+file[4100]+file[4101]+file[4102]+file[4103]+file[4104]+file[4105])
     var users = JSON.parse(file).users;
     var username = req.body.username;
     var password = req.body.password;
-    
     for(i=0;i<users.length;i++){
         if(users[i].username == username) {
           if(encryptor.decrypt(users[i].password) == password) {
