@@ -3,6 +3,17 @@
 	<xsl:template match="/">
 		<html>
 			<head>
+				<script>
+				<![CDATA[
+				//ADD SCRIPT HERE.
+				document.onload = function(){
+										var els=document.getElementByClass("deletes");
+										for(i=0; i < els.children; i++){
+
+										}
+				}
+				]]>
+				</script>
 				<style>
 				  table {
 				    border-collapse: collapse;
@@ -41,8 +52,9 @@
 									<xsl:value-of select="where"/>
 								</td>
 								<td>
-									<button><span class="glyphicon glyphicon-trash">
-									</span></button>
+									<button class="deletes" id="delete{id}"><span class="glyphicon glyphicon-trash">
+									</span>               
+									</button>
 								</td>
 							</tr>
 					</xsl:for-each>

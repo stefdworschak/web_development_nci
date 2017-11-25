@@ -9,6 +9,7 @@
             <div class="modal-body">
                 <form enctype='application/json' action="/post/json" method="post" id="enterForm">
                     <h4><span class="glyphicon glyphicon-calendar"></span> Enter New Event:</h4>
+                    <input type="hidden" name="id" value=0 required />
                     <div class="field">
                         <input type="date" name="date" placeholder="Date" required />
                     </div>

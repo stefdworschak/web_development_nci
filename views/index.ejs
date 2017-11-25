@@ -182,6 +182,13 @@
      var user = <%- JSON.stringify(data.user) %>;
     console.log(user);
       //$('#userdisplay').text(user.first_name);  
+     $("button[name=delete1]").click(()=>{
+       console.log(true);
+       console.log($(this).id);
+     });
+     function deleteElement(){
+       console.log(this)
+     }
      
 });
 

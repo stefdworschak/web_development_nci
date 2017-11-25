@@ -26,6 +26,7 @@ module.exports = function(req, res) {
           //Getting the longitude and latitude object and add it to the object
           obj.coords = response.json.results[0].geometry.location;
           obj.who = parseInt(obj.who);
+          obj.id = JSONparsed.appointment.length+1;
           // Add a new record into country array within the JSON file
           JSONparsed.appointment.push(obj);
 
