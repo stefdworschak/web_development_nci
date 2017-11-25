@@ -9,7 +9,7 @@ function load() {
         //$(this).removeClass('selected');
         $('.selected').removeClass('selected');
         $el.classList.add('selected');
-        
+        console.log("hey")
        // var $row = $(this).attr('id');
       //  var $td = 'thisTd'+$row.replace("thisTr","");
        // $($td).unhide();
