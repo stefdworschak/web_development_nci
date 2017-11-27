@@ -165,7 +165,8 @@
     var marker;
  
    $(document).ready(function() {
-      load();
+      var user = <%- JSON.stringify(data.user) %>;
+      load(user);
       $('#searchBtn').on('click',function(){
         var userid = <%- data.user.userid %>
         setMarkers(userid);
@@ -203,11 +204,7 @@
      $('.dropdown-toggle').dropdown()
      $('#changePwBtn').click(()=>{
        changePw();
-     });
-     
-     var user = <%- JSON.stringify(data.user) %>;
-    console.log(user);
-      //$('#userdisplay').text(user.first_name);  
+     }); 
      
 });
    function deleteElement(event){
