@@ -1,123 +1,6 @@
 <?xml version='1.0'?>
 <appointments>
     <appointment>
-        <id>1</id>
-        <date>2017-11-17</date>
-        <time>22:02</time>
-        <what>Event</what>
-        <who>1</who>
-        <full_name>Stefan Dworschak</full_name>
-        <where>2 Grand Canal Dock, Dublin 2, IE</where>
-        <coords>
-            <lat>53.33873579999999</lat>
-            <lng>-6.2385966</lng>
-        </coords>
-    </appointment>
-    <appointment>
-        <id>2</id>
-        <date>2017-11-15</date>
-        <time>03:00</time>
-        <what>Birthday</what>
-        <who>2</who>
-        <full_name>Mark Gaskin</full_name>
-        <where>45 The Moorings, Portobello Harbour, Dublin 8, Ireland</where>
-        <coords>
-            <lat>53.33042469999999</lat>
-            <lng>-6.2667643</lng>
-        </coords>
-    </appointment>
-    <appointment>
-        <id>3</id>
-        <date>2017-11-16</date>
-        <time>02:02</time>
-        <what>Fussball</what>
-        <who>2</who>
-        <full_name>Mark Gaskin</full_name>
-        <where>National College of Ireland, Dublin</where>
-        <coords>
-            <lat>53.34881739999999</lat>
-            <lng>-6.2431793</lng>
-        </coords>
-    </appointment>
-    <appointment>
-        <id>4</id>
-        <date>2017-11-14</date>
-        <time>12:12</time>
-        <what>Exam</what>
-        <who>1</who>
-        <full_name>Stefan Dworschak</full_name>
-        <where>Stephen's Green Shopping Center</where>
-        <coords>
-            <lat>53.33999009999999</lat>
-            <lng>-6.2624162</lng>
-        </coords>
-    </appointment>
-    <appointment>
-        <id>5</id>
-        <date>2017-11-16</date>
-        <time>20:00</time>
-        <what>Dentist</what>
-        <who>1</who>
-        <full_name>Stefan Dworschak</full_name>
-        <where>Rathmines</where>
-        <coords>
-            <lat>53.3218816</lat>
-            <lng>-6.2655052</lng>
-        </coords>
-    </appointment>
-    <appointment>
-        <id>6</id>
-        <date>2017-11-08</date>
-        <time>20:20</time>
-        <what>Champions League</what>
-        <who>1</who>
-        <full_name>Stefan Dworschak</full_name>
-        <where>The Whoolshed</where>
-        <coords>
-            <lat>53.350356</lat>
-            <lng>-6.267389</lng>
-        </coords>
-    </appointment>
-    <appointment>
-        <id>7</id>
-        <date>2017-11-08</date>
-        <time>20:20</time>
-        <what>Champions League</what>
-        <who>3</who>
-        <full_name>Graham Farell</full_name>
-        <where>The Whoolshed</where>
-        <coords>
-            <lat>53.350356</lat>
-            <lng>-6.267389</lng>
-        </coords>
-    </appointment>
-    <appointment>
-        <id>8</id>
-        <date>2017-11-21</date>
-        <time>20:02</time>
-        <what>Train</what>
-        <who>1</who>
-        <full_name>Stefan Dworschak</full_name>
-        <where>Conelly Station</where>
-        <coords>
-            <lat>40.6754634</lat>
-            <lng>-73.66915589999999</lng>
-        </coords>
-    </appointment>
-    <appointment>
-        <id>9</id>
-        <date>2017-11-21</date>
-        <time>20:02</time>
-        <what>Train</what>
-        <who>1</who>
-        <full_name>Stefan Dworschak</full_name>
-        <where>Conelly Station</where>
-        <coords>
-            <lat>40.6754634</lat>
-            <lng>-73.66915589999999</lng>
-        </coords>
-    </appointment>
-    <appointment>
         <id>10</id>
         <date>2017-11-14</date>
         <time>22:02</time>
@@ -144,19 +27,6 @@
         </coords>
     </appointment>
     <appointment>
-        <id>12</id>
-        <date>2017-11-21</date>
-        <time>14:00</time>
-        <what>Tour</what>
-        <who>2</who>
-        <full_name>Mark Gaskin</full_name>
-        <where>Kilmainham Jail</where>
-        <coords>
-            <lat>53.34187009999999</lat>
-            <lng>-6.309804799999999</lng>
-        </coords>
-    </appointment>
-    <appointment>
         <id>13</id>
         <date>2017-11-05</date>
         <time>14:00</time>
@@ -180,19 +50,6 @@
         <coords>
             <lat>53.3053439</lat>
             <lng>-6.220654</lng>
-        </coords>
-    </appointment>
-    <appointment>
-        <id>15</id>
-        <date>2017-11-22</date>
-        <time>10:00</time>
-        <what>Football Gam</what>
-        <who>3</who>
-        <full_name>Graham Farell</full_name>
-        <where>Lansdown Road</where>
-        <coords>
-            <lat>44.1017575</lat>
-            <lng>-123.1539545</lng>
         </coords>
     </appointment>
     <appointment>
@@ -440,6 +297,19 @@
         <coords>
             <lat>53.31041579999999</lat>
             <lng>-6.2898931</lng>
+        </coords>
+    </appointment>
+    <appointment>
+        <id>24</id>
+        <date>2017-11-28</date>
+        <time>08:00</time>
+        <what>Dinner</what>
+        <who>3</who>
+        <full_name>Graham Farell</full_name>
+        <where>Blackrock, Ireland</where>
+        <coords>
+            <lat>53.300791</lat>
+            <lng>-6.1770667</lng>
         </coords>
     </appointment>
 </appointments>

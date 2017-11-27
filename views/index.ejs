@@ -38,7 +38,7 @@
       padding-top:0px;
       color:gray;
     }
-    .selected{background:lightgray;}
+    .selected td {background:lightgray;opacity:1}
       
     table,
     th,
@@ -66,13 +66,15 @@
       border-style:solid;
     }
     #results {
-     float:center; 
-     margin-left:17%;
+      float:center; 
+      margin-left:17%;
       width:80%;
       height:65%;
       margin-top:10px;
       
-      
+    }
+    #appointmentsTable:hover {
+      cursor:pointer;
     }
     .container-fluid {
       
@@ -140,7 +142,8 @@
       width:default;
     }
     #share-error, #change-pw-error {display:none;}
-      
+    .deletes,.hiddenTd {border:0px solid white;
+    } .hiddenTd {vertical-align:middle;}
   </style>
   <link rel="stylesheet" href="/css/dropdown_menu.css" />
   <script src="/js/jquery.min.js"></script>
@@ -152,7 +155,8 @@
     var marker;
  
    $(document).ready(function() {
-      load();
+     var user = <%- JSON.stringify(data.user) %>;
+      load(user);
 
       $('#searchBtn').on('click',function(){
         var userid = <%- data.user.userid %>
@@ -191,12 +195,7 @@
      $('.dropdown-toggle').dropdown()
      $('#changePwBtn').click(()=>{
        changePw();
-     });
-     
-     var user = <%- JSON.stringify(data.user) %>;
-    console.log(user);
-      //$('#userdisplay').text(user.first_name);  
-     
+     });     
 });
    function deleteElement(event){
        var el=event.target.id;
@@ -239,7 +238,7 @@
     <div class="row"> 
      
         <!-- col width 7 start --> 
-        <div class="col-sm-7 col-md-7 pull-left">
+        <div class="col-sm-6 col-md-6 col-lg-7 pull-left">
           <div class="page-header">
               <h1 style="display:inline-blockstyle;"><img src="/img/icon3.png" id="logo" />My Calendar</h1>
           </div>
@@ -247,7 +246,7 @@
         <!-- col width 7 end --> 
      
         <!-- col width 3 start --> 
-        <div class="col-sm-3 col-md-3">
+        <div class="col-sm-3 col-md-3 col-lg-3">
 
           <div class="input-group">
             <input type="text" class="form-control" aria-label="..." style="min-height:35px" name="search" />
@@ -261,7 +260,7 @@
        <!-- col width 3 start -->      
        
        <!-- col width 2 start --> 
-       <div class="col-sm-2 col-md-2 pull-right"> 
+       <div class="col-sm-3 col-md-3 col-lg-2 pull-right" style=!> 
           <!-- Search button -->
           <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#enterEventModal"><span class="glyphicon glyphicon-calendar"></button>
          &nbsp; <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#DataModal"><span class="glyphicon glyphicon-list-alt"></button>
@@ -332,7 +331,9 @@
               info = new google.maps.InfoWindow({
                   content: contStr
               });
-
+              
+              console.log(pinUrl+colors[pid]);
+              
               pinImg = new google.maps.MarkerImage(pinUrl+colors[pid]);
               marker = new google.maps.Marker({
                 position: myCoords[i].coords,
@@ -341,10 +342,13 @@
                 title: myCoords[i].what
               });
 
-              google.maps.event.addListener(marker,'click', (function(marker,content,infowindow){
+              google.maps.event.addListener(marker,'mouseover', (function(marker,content,infowindow){
                   return function() {
                      infowindow.setContent(content);
                      infowindow.open(map,marker);
+                      google.maps.event.addListener(marker,'mouseout', (function(){
+                         infowindow.close();
+                       }))
                   };
               })(marker,contStr,info));
 

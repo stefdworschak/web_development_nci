@@ -50,6 +50,7 @@ router.post('/register',_post.registerCtrl);
 router.post('/post/json', _post.createEvtCtrl);
 router.post('/post/share', _post.shareCalCtrl);
 router.post('/post/change_password', _post.changePwCtrl);
+router.post('/post/delete_record',_post.deleteEvtCtrl);
 
 server.listen(process.env.PORT || 3000, process.env.IP || "0.0.0.0", function() {
   var addr = server.address();

@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:template match="/">
 				<table id="appointmentsTable">
-					<tr id="thisTr{position()}">
+					<tr>
 						<th>Date</th>
 						<th>Time</th>
 						<th>Description</th>
@@ -11,7 +11,7 @@
 						<th> </th>
 					</tr>
 					<xsl:for-each select="appointments/appointment">
-							<tr>
+							<tr id="trId{position()}">
 								<td>
 									<xsl:value-of select="date"/>
 								</td>
@@ -26,11 +26,6 @@
 								</td>
 								<td>
 									<xsl:value-of select="where"/>
-								</td>
-								<td id="thisTd{position()}" style="display:none;">
-									<input type="image" src="https://upload.wikimedia.org/wikipedia/commons/a/a7/Trash_Can.svg" style="height:20px;margin-left:2px margin-right:2px" class="deletes" id="delete{position()}">
-											<!--<xsl:attribute name="onclick">deleteElement(event)</xsl:attribute>-->
-									</input>
 								</td>
 							</tr>
 					</xsl:for-each>
