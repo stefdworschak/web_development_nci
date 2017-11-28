@@ -1,45 +1,6 @@
 {
     "appointment": [
         {
-            "id": 10,
-            "date": "2017-11-14",
-            "time": "22:02",
-            "what": "Event",
-            "who": 1,
-            "full_name": "Stefan Dworschak",
-            "where": "DCU",
-            "coords": {
-                "lat": 38.9071923,
-                "lng": -77.0368707
-            }
-        },
-        {
-            "id": 11,
-            "date": "2017-11-15",
-            "time": "22:22",
-            "what": "Event",
-            "who": 3,
-            "full_name": "Graham Farell",
-            "where": "Dublin City University",
-            "coords": {
-                "lat": 53.385062,
-                "lng": -6.2567865
-            }
-        },
-        {
-            "id": 13,
-            "date": "2017-11-05",
-            "time": "14:00",
-            "what": "The Big Shop",
-            "who": 4,
-            "full_name": "Aine Brennan",
-            "where": "Lidl, Terenure",
-            "coords": {
-                "lat": 53.309209,
-                "lng": -6.2834033
-            }
-        },
-        {
             "id": 14,
             "date": "2017-11-08",
             "time": "10:01",
@@ -131,97 +92,6 @@
             }
         },
         {
-            "id": 22,
-            "date": "2017-11-22",
-            "time": "10:00",
-            "what": "Visit",
-            "who": 1,
-            "full_name": "Stefan Dworschak",
-            "where": "Kilmainhaim Jail",
-            "coords": {
-                "lat": 53.34187009999999,
-                "lng": -6.309804799999999
-            }
-        },
-        {
-            "id": 23,
-            "date": "2017-11-15",
-            "time": "10:00",
-            "what": "Fishing",
-            "who": 1,
-            "full_name": "Stefan Dworschak",
-            "where": "Howth",
-            "coords": {
-                "lat": 53.3785693,
-                "lng": -6.0570132
-            }
-        },
-        {
-            "id": 24,
-            "date": "2017-11-15",
-            "time": "10:01",
-            "what": "Fishing",
-            "who": 1,
-            "full_name": "Stefan Dworschak",
-            "where": "Howth",
-            "coords": {
-                "lat": 53.3785693,
-                "lng": -6.0570132
-            }
-        },
-        {
-            "id": 25,
-            "date": "2017-11-14",
-            "time": "12:00",
-            "what": "Fishing2",
-            "who": 1,
-            "full_name": "Stefan Dworschak",
-            "where": "Dun Lagohaire",
-            "coords": {
-                "lat": 53.2943958,
-                "lng": -6.133866599999999
-            }
-        },
-        {
-            "id": 26,
-            "date": "2017-11-22",
-            "time": "10:00",
-            "what": "NockenStocken",
-            "who": 1,
-            "full_name": "Stefan Dworschak",
-            "where": "Ballynocken, Ireland",
-            "coords": {
-                "lat": 52.9769314,
-                "lng": -6.1431625
-            }
-        },
-        {
-            "id": 27,
-            "date": "2017-11-27",
-            "time": "20:00",
-            "what": "Concert",
-            "who": 1,
-            "full_name": "Stefan Dworschak",
-            "where": "3 Arena, Dublin",
-            "coords": {
-                "lat": 53.3474963,
-                "lng": -6.2285078
-            }
-        },
-        {
-            "id": 28,
-            "date": "2017-11-25",
-            "time": "21:00",
-            "what": "Concert",
-            "who": 1,
-            "full_name": "Stefan Dworschak",
-            "where": "Vicar Street, Dublin",
-            "coords": {
-                "lat": 53.3426072,
-                "lng": -6.2779827
-            }
-        },
-        {
             "id": 29,
             "date": "2018-01-19",
             "time": "01:58",
@@ -235,45 +105,6 @@
             }
         },
         {
-            "id": 30,
-            "date": "2017-11-22",
-            "time": "16:00",
-            "what": "Picknick",
-            "who": 1,
-            "full_name": "Stefan Dworschak",
-            "where": "Phoenix Park, Dublin",
-            "coords": {
-                "lat": 53.3558823,
-                "lng": -6.3298133
-            }
-        },
-        {
-            "id": 31,
-            "date": "2017-11-24",
-            "time": "10:00",
-            "what": "Meet Friends",
-            "who": 1,
-            "full_name": "Stefan Dworschak",
-            "where": "Drumcondra, Ireland",
-            "coords": {
-                "lat": 53.3633833,
-                "lng": -6.25786
-            }
-        },
-        {
-            "id": 32,
-            "date": "2017-11-21",
-            "time": "10:00",
-            "what": "University",
-            "who": 1,
-            "full_name": "Stefan Dworschak",
-            "where": "Trinity College, Dublin",
-            "coords": {
-                "lat": 53.3437935,
-                "lng": -6.254571599999999
-            }
-        },
-        {
             "id": 33,
             "date": "2017-11-29",
             "time": "15:00",
@@ -284,32 +115,6 @@
             "coords": {
                 "lat": 53.3528913,
                 "lng": -6.3909227
-            }
-        },
-        {
-            "id": 34,
-            "date": "2017-11-21",
-            "time": "18:00",
-            "what": "Flat Viewing",
-            "who": 1,
-            "full_name": "Stefan Dworschak",
-            "where": "Terenure, Dublin",
-            "coords": {
-                "lat": 53.31041579999999,
-                "lng": -6.2898931
-            }
-        },
-        {
-            "id": 24,
-            "date": "2017-11-28",
-            "time": "08:00",
-            "what": "Dinner",
-            "who": 3,
-            "full_name": "Graham Farell",
-            "where": "Blackrock, Ireland",
-            "coords": {
-                "lat": 53.300791,
-                "lng": -6.1770667
             }
         }
     ]

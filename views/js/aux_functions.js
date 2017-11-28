@@ -6,10 +6,17 @@ function load(user) {
       $("#results").append(html);
       
       $("#appointmentsTable tbody tr").click( function () {
-            $(".selected").removeClass("selected");
-            $(this).addClass("selected");
             var $row=$(this).attr("id").replace("trId","");
             var $name = $(this)[0].children[3].innerText;
+            $(".selected").removeClass("selected");
+            $(".selected_other").removeClass("selected_other");
+        
+            if($name === user.first_name + " " + user.last_name) {
+                $(this).addClass("selected");
+            } else {
+                $(this).addClass("selected_other");
+            }
+            
            // console.log($name);
            // console.log(user.first_name + " " + user.last_name);
         $(document).keyup((evt)=>{
@@ -93,6 +100,7 @@ function preloadSharedCals(usr,data){
   var user = usr;
   console.log(arr.length);
   
+  $('#sharedCalsTbl').append('<th colspan=2>Shared with:</th>'
   for(i=0;i<arr.length;i++){
     $('#sharedCalsTbl').append('<tr><td>'+arr[i].who+'</td><td>'+arr[i].full_name+'</td></tr>');
   }

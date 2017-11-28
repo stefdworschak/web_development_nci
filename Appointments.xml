@@ -1,45 +1,6 @@
 <?xml version='1.0'?>
 <appointments>
     <appointment>
-        <id>10</id>
-        <date>2017-11-14</date>
-        <time>22:02</time>
-        <what>Event</what>
-        <who>1</who>
-        <full_name>Stefan Dworschak</full_name>
-        <where>DCU</where>
-        <coords>
-            <lat>38.9071923</lat>
-            <lng>-77.0368707</lng>
-        </coords>
-    </appointment>
-    <appointment>
-        <id>11</id>
-        <date>2017-11-15</date>
-        <time>22:22</time>
-        <what>Event</what>
-        <who>3</who>
-        <full_name>Graham Farell</full_name>
-        <where>Dublin City University</where>
-        <coords>
-            <lat>53.385062</lat>
-            <lng>-6.2567865</lng>
-        </coords>
-    </appointment>
-    <appointment>
-        <id>13</id>
-        <date>2017-11-05</date>
-        <time>14:00</time>
-        <what>The Big Shop</what>
-        <who>4</who>
-        <full_name>Aine Brennan</full_name>
-        <where>Lidl, Terenure</where>
-        <coords>
-            <lat>53.309209</lat>
-            <lng>-6.2834033</lng>
-        </coords>
-    </appointment>
-    <appointment>
         <id>14</id>
         <date>2017-11-08</date>
         <time>10:01</time>
@@ -131,97 +92,6 @@
         </coords>
     </appointment>
     <appointment>
-        <id>22</id>
-        <date>2017-11-22</date>
-        <time>10:00</time>
-        <what>Visit</what>
-        <who>1</who>
-        <full_name>Stefan Dworschak</full_name>
-        <where>Kilmainhaim Jail</where>
-        <coords>
-            <lat>53.34187009999999</lat>
-            <lng>-6.309804799999999</lng>
-        </coords>
-    </appointment>
-    <appointment>
-        <id>23</id>
-        <date>2017-11-15</date>
-        <time>10:00</time>
-        <what>Fishing</what>
-        <who>1</who>
-        <full_name>Stefan Dworschak</full_name>
-        <where>Howth</where>
-        <coords>
-            <lat>53.3785693</lat>
-            <lng>-6.0570132</lng>
-        </coords>
-    </appointment>
-    <appointment>
-        <id>24</id>
-        <date>2017-11-15</date>
-        <time>10:01</time>
-        <what>Fishing</what>
-        <who>1</who>
-        <full_name>Stefan Dworschak</full_name>
-        <where>Howth</where>
-        <coords>
-            <lat>53.3785693</lat>
-            <lng>-6.0570132</lng>
-        </coords>
-    </appointment>
-    <appointment>
-        <id>25</id>
-        <date>2017-11-14</date>
-        <time>12:00</time>
-        <what>Fishing2</what>
-        <who>1</who>
-        <full_name>Stefan Dworschak</full_name>
-        <where>Dun Lagohaire</where>
-        <coords>
-            <lat>53.2943958</lat>
-            <lng>-6.133866599999999</lng>
-        </coords>
-    </appointment>
-    <appointment>
-        <id>26</id>
-        <date>2017-11-22</date>
-        <time>10:00</time>
-        <what>NockenStocken</what>
-        <who>1</who>
-        <full_name>Stefan Dworschak</full_name>
-        <where>Ballynocken, Ireland</where>
-        <coords>
-            <lat>52.9769314</lat>
-            <lng>-6.1431625</lng>
-        </coords>
-    </appointment>
-    <appointment>
-        <id>27</id>
-        <date>2017-11-27</date>
-        <time>20:00</time>
-        <what>Concert</what>
-        <who>1</who>
-        <full_name>Stefan Dworschak</full_name>
-        <where>3 Arena, Dublin</where>
-        <coords>
-            <lat>53.3474963</lat>
-            <lng>-6.2285078</lng>
-        </coords>
-    </appointment>
-    <appointment>
-        <id>28</id>
-        <date>2017-11-25</date>
-        <time>21:00</time>
-        <what>Concert</what>
-        <who>1</who>
-        <full_name>Stefan Dworschak</full_name>
-        <where>Vicar Street, Dublin</where>
-        <coords>
-            <lat>53.3426072</lat>
-            <lng>-6.2779827</lng>
-        </coords>
-    </appointment>
-    <appointment>
         <id>29</id>
         <date>2018-01-19</date>
         <time>01:58</time>
@@ -235,45 +105,6 @@
         </coords>
     </appointment>
     <appointment>
-        <id>30</id>
-        <date>2017-11-22</date>
-        <time>16:00</time>
-        <what>Picknick</what>
-        <who>1</who>
-        <full_name>Stefan Dworschak</full_name>
-        <where>Phoenix Park, Dublin</where>
-        <coords>
-            <lat>53.3558823</lat>
-            <lng>-6.3298133</lng>
-        </coords>
-    </appointment>
-    <appointment>
-        <id>31</id>
-        <date>2017-11-24</date>
-        <time>10:00</time>
-        <what>Meet Friends</what>
-        <who>1</who>
-        <full_name>Stefan Dworschak</full_name>
-        <where>Drumcondra, Ireland</where>
-        <coords>
-            <lat>53.3633833</lat>
-            <lng>-6.25786</lng>
-        </coords>
-    </appointment>
-    <appointment>
-        <id>32</id>
-        <date>2017-11-21</date>
-        <time>10:00</time>
-        <what>University</what>
-        <who>1</who>
-        <full_name>Stefan Dworschak</full_name>
-        <where>Trinity College, Dublin</where>
-        <coords>
-            <lat>53.3437935</lat>
-            <lng>-6.254571599999999</lng>
-        </coords>
-    </appointment>
-    <appointment>
         <id>33</id>
         <date>2017-11-29</date>
         <time>15:00</time>
@@ -284,32 +115,6 @@
         <coords>
             <lat>53.3528913</lat>
             <lng>-6.3909227</lng>
-        </coords>
-    </appointment>
-    <appointment>
-        <id>34</id>
-        <date>2017-11-21</date>
-        <time>18:00</time>
-        <what>Flat Viewing</what>
-        <who>1</who>
-        <full_name>Stefan Dworschak</full_name>
-        <where>Terenure, Dublin</where>
-        <coords>
-            <lat>53.31041579999999</lat>
-            <lng>-6.2898931</lng>
-        </coords>
-    </appointment>
-    <appointment>
-        <id>24</id>
-        <date>2017-11-28</date>
-        <time>08:00</time>
-        <what>Dinner</what>
-        <who>3</who>
-        <full_name>Graham Farell</full_name>
-        <where>Blackrock, Ireland</where>
-        <coords>
-            <lat>53.300791</lat>
-            <lng>-6.1770667</lng>
         </coords>
     </appointment>
 </appointments>
