@@ -100,7 +100,7 @@ function preloadSharedCals(usr,data){
   var user = usr;
   console.log(arr.length);
   
-  $('#sharedCalsTbl').append('<th colspan=2>Shared with:</th>'
+  $('#sharedCalsTbl').append('<th colspan=2>Shared with:</th>');
   for(i=0;i<arr.length;i++){
     $('#sharedCalsTbl').append('<tr><td>'+arr[i].who+'</td><td>'+arr[i].full_name+'</td></tr>');
   }
