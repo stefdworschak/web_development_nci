@@ -46,7 +46,6 @@ function filter_JSON(json, keywords) {
 }
 
 function deleteRecord(id){
-  console.log(id);
     $.ajax({
              url: '/post/delete_record',
              method: 'post',
@@ -87,4 +86,16 @@ function setMarkers(userid){
       }       
       initMap(home,json);
   })
+}
+
+function preloadSharedCals(usr,data){
+  var arr = data;
+  var user = usr;
+  console.log(arr.length);
+  
+  for(i=0;i<arr.length;i++){
+    $('#sharedCalsTbl').append('<tr><td>'+arr[i].who+'</td><td>'+arr[i].full_name+'</td></tr>');
+  }
+  
+  
 }
