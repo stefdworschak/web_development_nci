@@ -40,19 +40,6 @@
             }
         },
         {
-            "id": 18,
-            "date": "2017-11-30",
-            "time": "03:03",
-            "what": "Event",
-            "who": 2,
-            "full_name": "Mark Gaskin",
-            "where": "National College of Ireland, Dublin",
-            "coords": {
-                "lat": 53.34881739999999,
-                "lng": -6.2431793
-            }
-        },
-        {
             "id": 19,
             "date": "2017-12-01",
             "time": "04:03",
@@ -63,19 +50,6 @@
             "coords": {
                 "lat": 53.3484728,
                 "lng": -6.2556986
-            }
-        },
-        {
-            "id": 20,
-            "date": "2018-01-18",
-            "time": "14:04",
-            "what": "Birthday",
-            "who": 3,
-            "full_name": "Graham Farell",
-            "where": "NCI college, dublin",
-            "coords": {
-                "lat": 53.34881739999999,
-                "lng": -6.2431793
             }
         },
         {
@@ -92,19 +66,6 @@
             }
         },
         {
-            "id": 29,
-            "date": "2018-01-19",
-            "time": "01:58",
-            "what": "Holiday",
-            "who": 2,
-            "full_name": "Mark Gaskin",
-            "where": "DCU, dublin",
-            "coords": {
-                "lat": 53.385062,
-                "lng": -6.2567865
-            }
-        },
-        {
             "id": 33,
             "date": "2017-11-29",
             "time": "15:00",
@@ -115,6 +76,45 @@
             "coords": {
                 "lat": 53.3528913,
                 "lng": -6.3909227
+            }
+        },
+        {
+            "id": 7,
+            "date": "2018-01-19",
+            "time": "14:30",
+            "what": "Match",
+            "who": 2,
+            "full_name": "Mark Gaskin",
+            "where": "Aviva Stadium, landsdown road, Dublin",
+            "coords": {
+                "lat": 53.3352318,
+                "lng": -6.228456899999999
+            }
+        },
+        {
+            "id": 8,
+            "date": "2017-11-30",
+            "time": "20:00",
+            "what": "Event",
+            "who": 2,
+            "full_name": "Mark Gaskin",
+            "where": "Irish Life, abbey street, dublin",
+            "coords": {
+                "lat": 53.3494981,
+                "lng": -6.2547172
+            }
+        },
+        {
+            "id": 9,
+            "date": "2018-01-12",
+            "time": "21:30",
+            "what": "Birthday",
+            "who": 2,
+            "full_name": "Mark Gaskin",
+            "where": "92 Clonard Drive, Dundrum, dublin",
+            "coords": {
+                "lat": 53.275232,
+                "lng": -6.2354575
             }
         }
     ]
