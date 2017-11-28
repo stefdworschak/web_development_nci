@@ -1,0 +1,29 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="appointments">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="appointment" maxOccurs="unbounded" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:byte" name="id"/>
+              <xs:element type="xs:date" name="date"/>
+              <xs:element type="xs:string" name="time"/>
+              <xs:element type="xs:string" name="what"/>
+              <xs:element type="xs:byte" name="who"/>
+              <xs:element type="xs:string" name="full_name"/>
+              <xs:element type="xs:string" name="where"/>
+              <xs:element name="coords">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:float" name="lat"/>
+                    <xs:element type="xs:float" name="lng"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

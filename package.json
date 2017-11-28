@@ -11,6 +11,7 @@
     "express-session": "^1.15.6",
     "fs": "0.0.1-security",
     "js2xmlparser": "^2.0.2",
+    "libxmljs": "^0.18.7",
     "libxslt": "^0.6.3",
     "simple-encryptor": "^1.1.1",
     "xml2js": "^0.4.19"
