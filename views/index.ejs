@@ -75,9 +75,10 @@
      }
     
     #map {
-      margin-left:10px;
-      min-width:90%;
-      min-height:600px;
+      /*margin-left:10px;*/
+      min-width:100%;
+      min-height:800px;
+      max-height:800px;
       border-style:solid;
     }
     #results {
@@ -101,6 +102,7 @@
     
     #search, #reset {
       margin-top:-10px;
+      width: 10%;
       
     }
     #logo {
@@ -229,29 +231,46 @@
 
 <body>
   
+  <!-- container-fluid start -->
+  
  <div class="container-fluid">
-    
-    <!-- container-fluid start -->
-    
-    <!-- nav start -->
-    
-    <div class="row myNav">
-      
-      <div class="col-md-12" style="min-height:50px; background: white; text-align:right; padding-top:5px; padding-bottom:5px;">
+   
+ <!-- container-fluid start -->
+   
+   <!-- nav start -->
+   
+   <div class="row myNav">
+     
+     <div class="col-md-12" style="min-height:50px; background: white; text-align:right; padding-top:5px; padding-bottom:5px;">
+       
+       <div style="float:left; width:2.5%; min-height:50px;">
+         
+         <img src="/img/icon3.png" id="logo"/>
+       
+       </div>
+       
+       <div style="float: left; min-height: 50px; width: 47.5%;">
+         
+         <h1 style="float:left; margin-left:20px;">My Calendar</h1>
+       
+       </div>
+       
+       <div class="col-sm-3 col-md-3 col-lg-4" style="float:left; width:30%; padding-left:20%; background: white; min-height: 50px; padding-top:0.5%; padding-right:0.5%; padding-bottom:0.5%;">
+         
+         <div class="input-group">
+           <input type="text" class="form-control" aria-label="..." style="min-height:35px max-width:20%;" name="search" />
+           <div class="input-group-btn">
+             <button class="btn btn-default btn-md" type="button" id="searchBtn"><span class="glyphicon glyphicon-search"></button>
+               <button class="btn btn-default btn-md" type="button" id="resetBtn"><span class="glyphicon glyphicon-fast-backward"></button>
+                 
+                 <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#enterEventModal"><span class="glyphicon glyphicon-calendar"></button>&nbsp;
+               <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#DataModal"><span class="glyphicon glyphicon-list-alt"></button>&nbsp;
+             <button type="button" class="btn btn-info btn-md"  data-toggle="modal" data-target="#shareForm"><span class="glyphicon glyphicon-share"></span></button>
+           </div>
+         </div>
+       </div>
         
-        <div style="float:left; width:2.5%; min-height:50px;">
-        
-          <img src="/img/icon3.png" id="logo"/>
-        
-        </div>
-        
-        <div style="min-height: 50px; width: 47.5%;">
-        
-          <h1 style="float:left; margin-left:20px;">My Calendar</h1>
-        
-        </div>
-        
-       <div style="float: left; width:25%; background: white;">
+       <div style="float: right; width:20%; background: white;">
         <span id="userdisplay">Hi, <%= data.user.first_name %>!</span>
           <!--<button type="button" class="btn btn-danger" style="min-height:45; display:inline;" id="logoutBtn">Log Out</button>-->
           <div class="btn-group" id="dropMenu" style="margin-top: 7.5px;">
@@ -273,35 +292,22 @@
     </div>
     
     <!--nav end -->
-    
-      <div style="float:left; width:50%; padding-left:20%; background: white; min-height: 50px; padding-top:0.5%; padding-right:0.5%; padding-bottom:0.5%;">
-        <div class="input-group-btn">
-          <div class="input-group">
-            <input type="text" class="form-control" aria-label="..." style="min-height:35px max-width:20%;" name="search" />
-            <button class="btn btn-default btn-md" type="button" id="searchBtn"><span class="glyphicon glyphicon-search"></button>
-              <button class="btn btn-default btn-md" type="button" id="resetBtn"><span class="glyphicon glyphicon-fast-backward"></button>
-                <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#enterEventModal"><span class="glyphicon glyphicon-calendar"></button>&nbsp;
-              <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#DataModal"><span class="glyphicon glyphicon-list-alt"></button>&nbsp;
-            <button type="button" class="btn btn-info btn-md"  data-toggle="modal" data-target="#shareForm"><span class="glyphicon glyphicon-share"></span></button>
-          </div>
-        </div>
-      </div>
       
-    <div id="map" style="width=100%;"></div>
+    <div id="map"></div>
     
     <!-- row start --> 
-    <div class="row"> 
+    <!--<div class="row">-->
      
         <!-- col width 7 start --> 
-        <div class="col-sm-7 col-md-6 col-lg-6 pull-left">
+        <!--<div class="col-sm-7 col-md-6 col-lg-6 pull-left">
           <div class="page-header">
               <!--<h1 style="display:inline-blockstyle;"><img src="/img/icon3.png" id="logo" />My Calendar</h1>-->
-          </div>
-        </div>
+          <!--</div>
+        </div>-->
         <!-- col width 7 end --> 
      
         <!-- col width 3 start --> 
-        <div class="col-sm-3 col-md-3 col-lg-4">
+        <!--<div class="col-sm-3 col-md-3 col-lg-4">
 
           <div class="input-group">
             <input type="text" class="form-control" aria-label="..." style="min-height:35px" name="search" />
@@ -311,17 +317,17 @@
             </div>
           </div>
 
-       </div>
+       </div>-->
        <!-- col width 3 start -->      
        
        <!-- col width 2 start --> 
-       <div class="col-sm-2 col-md-3 col-lg-2 pull-right"> 
+       <!--<div class="col-sm-2 col-md-3 col-lg-2 pull-right">-->
           <!-- Search button -->
-          <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#enterEventModal"><span class="glyphicon glyphicon-calendar"></button>
+          <!--<button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#enterEventModal"><span class="glyphicon glyphicon-calendar"></button>
          &nbsp; <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#DataModal"><span class="glyphicon glyphicon-list-alt"></button>
          &nbsp; <button type="button" class="btn btn-info btn-md"  data-toggle="modal" data-target="#shareForm"><span class="glyphicon glyphicon-share"></span></button>
       </div>
-    </div>
+    </div>-->
           
     <!--<div class="row">
         <div class="col-md-12">
@@ -397,23 +403,26 @@
               position: para,
               map: map,
               title: 'Hello World!'
-            });
+          });
         }*/
-      </script>
-      <script async defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBF2VwTjDiUFzvdA3IuQw_8H5JYq803bHs&callback=initMap">
-      </script>
+    </script>
+         
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBF2VwTjDiUFzvdA3IuQw_8H5JYq803bHs&callback=initMap">
+    </script>
 
       
-      <%- include('includes/modals/enterEvent-modal') %>
-      <%- include('includes/modals/shareCalendar-modal') %>
-      <%- include('includes/modals/changePw-modal') %>
-      <%- include('includes/modals/Data-modal') %>    
-       <%- include('includes/modals/sharedCal-modal') %>       
-          
-<!-- container-fluid end -->      
-</div>
+    <%- include('includes/modals/enterEvent-modal') %>
+    <%- include('includes/modals/shareCalendar-modal') %>
+    <%- include('includes/modals/changePw-modal') %>
+    <%- include('includes/modals/Data-modal') %>
+    <%- include('includes/modals/sharedCal-modal') %>
+
 <!-- container-fluid end -->
-          
+            
+</div>
+            
+<!-- container-fluid end -->
+            
 </body>
 </html>
