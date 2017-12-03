@@ -76,8 +76,10 @@
     
     #map {
       /*margin-left:10px;*/
+      position:fixed;
       min-width:100%;
-      min-height:800px;
+      height:800px;
+      max-width:800px;
       max-height:800px;
       border-style:solid;
     }
@@ -124,13 +126,7 @@
        
           }
     
-    .modal-dialog{
-     float:centre;   
-      margin-left:17%;
-      width:65%;
-      height:85%;
-      overflow:auto;
-    }
+   
   
     
     
@@ -255,7 +251,7 @@
        
        </div>
        
-       <div class="col-sm-3 col-md-3 col-lg-4" style="float:left; width:30%; padding-left:20%; background: white; min-height: 50px; padding-top:0.5%; padding-right:0.5%; padding-bottom:0.5%;">
+       <div class="col-sm-3 col-md-3 col-lg-4" style="float:left; width:30%; padding-left:50px; background: white; min-height: 50px; padding-top:0.5%; padding-right:0.5%; padding-bottom:0.5%;">
          
          <div class="input-group">
            <input type="text" class="form-control" aria-label="..." style="min-height:35px max-width:20%;" name="search" />
@@ -270,7 +266,7 @@
          </div>
        </div>
         
-       <div style="float: right; width:20%; background: white;">
+       <div style="float: right; width:15%; background: white;">
         <span id="userdisplay">Hi, <%= data.user.first_name %>!</span>
           <!--<button type="button" class="btn btn-danger" style="min-height:45; display:inline;" id="logoutBtn">Log Out</button>-->
           <div class="btn-group" id="dropMenu" style="margin-top: 7.5px;">
