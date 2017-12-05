@@ -24,12 +24,23 @@
       <!-- https://jqueryvalidation.org/ -->
       <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
       <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
-
+  
   <style>
-    body {
-      /*padding-top: 60px    ;*/
-      padding-bottom: 60px;
+    
+    html {
+      height: 100%;
     }
+    
+    body {
+      height: 100%;
+      padding-bottom: 50px;
+    }
+    
+    .container-fluid {
+      height: 100%;
+      padding-bottom: 50px;
+    }
+    
     hr {
       border-top:1px solid lightgray;
     }
@@ -75,12 +86,11 @@
      }
     
     #map {
-      /*margin-left:10px;*/
-      min-width:100%;
-      min-height:800px;
-      max-height:800px;
-      border-style:solid;
+      width: 100%;
+      height: 100%;
+      border-style: solid;
     }
+    
     #results {
      float:centre; 
      margin-left:10%;
@@ -95,10 +105,6 @@
       width:80%;
       height:65%;
        margin-top:10px;}
-    
-    .container-fluid {
-      
-    }     
     
     #search, #reset {
       margin-top:-10px;
