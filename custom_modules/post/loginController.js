@@ -6,7 +6,6 @@ module.exports = function(req,res) {
    
     var file = fs.readFileSync("users.json","utf-8");
     var loggedin = false;
-    console.log(file[4098]+file[4099]+file[4100]+file[4101]+file[4102]+file[4103]+file[4104]+file[4105])
     var users = JSON.parse(file).users;
     var username = req.body.username;
     var password = req.body.password;
@@ -15,6 +14,7 @@ module.exports = function(req,res) {
           if(encryptor.decrypt(users[i].password) == password) {
             loggedin=true;
             delete users[i].password;
+            delete users[i].username;
             var details = users[i];
             // Display loggedin user details
             // console.log(details);

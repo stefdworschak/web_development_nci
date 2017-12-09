@@ -5,6 +5,7 @@ module.exports = {
   registerCtrl: require('./registerController'),
   loginCtrl: require('./loginController'),
   createEvtCtrl: require('./createEvtController'),
-  deleteEvtCtrl:require('./deleteEvtController')
+  deleteEvtCtrl:require('./deleteEvtController'),
+  sharedCalsCtrl: require('./sharedCalsController')
   
 }

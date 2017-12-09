@@ -6,6 +6,7 @@ function load(user) {
       $("#results").append(html);
       
       $("#appointmentsTable tbody tr").click( function () {
+            $(document).off('keyup');
             var $row=$(this).attr("id").replace("trId","");
             var $name = $(this)[0].children[3].innerText;
             $(".selected").removeClass("selected");
@@ -16,9 +17,7 @@ function load(user) {
             } else {
                 $(this).addClass("selected_other");
             }
-            
-           // console.log($name);
-           // console.log(user.first_name + " " + user.last_name);
+
         $(document).keyup((evt)=>{
           if(evt.key === 'Delete' || evt.key === 'Backspace'){
             if($name === user.first_name + " " + user.last_name) {
@@ -29,7 +28,7 @@ function load(user) {
       });
     }
   });
-}
+} 
 
 function filter_JSON(json, keywords) {
   var count;
@@ -95,15 +94,22 @@ function setMarkers(userid){
   })
 }
 
-function preloadSharedCals(usr,data){
-  var arr = data;
+function preloadSharedCals(usr){
   var user = usr;
-  console.log(arr.length);
-  
-  $('#sharedCalsTbl').append('<th colspan=2>Shared with:</th>');
-  for(i=0;i<arr.length;i++){
-    $('#sharedCalsTbl').append('<tr><td>'+arr[i].who+'</td><td>'+arr[i].full_name+'</td></tr>');
-  }
-  
-  
+  $.ajax({
+    url: "/post/sharedCals",
+    data: {'userid':user.userid},
+    method: 'POST',
+    cache: false
+  }).done((resp)=>{
+      var sent = resp.sent;
+      var received = resp.received;
+      var len = sent.length > received.length ? sent.length : received.length
+      $('#sharedCals').append('<tr><th>Shared with me:</th><th width="20px;">&nbsp;</th><th>Shared by me:</th></tr>');
+      for(i=0;i<len;i++){
+          var tmpSent = sent[i] === undefined ? "" : sent[i];
+          var tmpReceived = received[i] === undefined ? "" : received[i];
+          $('#sharedCals').append('<tr><td>'+tmpSent+'</td><td>&nbsp;</td><td>'+tmpReceived+'</td></tr>');
+      }
+  });
 }

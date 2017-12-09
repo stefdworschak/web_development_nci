@@ -66,19 +66,6 @@
             }
         },
         {
-            "id": 33,
-            "date": "2017-11-29",
-            "time": "15:00",
-            "what": "Strolling around",
-            "who": 1,
-            "full_name": "Stefan Dworschak",
-            "where": "Liffey Valley, Dublin",
-            "coords": {
-                "lat": 53.3528913,
-                "lng": -6.3909227
-            }
-        },
-        {
             "id": 7,
             "date": "2018-01-19",
             "time": "14:30",
@@ -128,6 +115,20 @@
             "coords": {
                 "lat": 53.360712,
                 "lng": -6.2512089
+            }
+        },
+        {
+            "id": 11,
+            "date": "2017-12-23",
+            "time": "13:00",
+            "what": "Exam",
+            "who": 1,
+            "full_name": "Stefan Dworschak",
+            "where": "Trinity College, Dublin",
+            "email": "asd@asd.com",
+            "coords": {
+                "lat": 53.3437935,
+                "lng": -6.254571599999999
             }
         }
     ]

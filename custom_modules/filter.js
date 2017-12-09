@@ -18,3 +18,43 @@ exports.filter = function (json, user){
     }
     return jsonParsed;
 }
+
+exports.filterUsr = function (jsonParsed, user_obj){
+  
+  var json = jsonParsed.users;
+  var user = user_obj;
+  var received = [];
+  var sent = [];
+  var receivedCals = [];
+  var sentCals = [];
+  //console.log(json[0].userid + "  "+user);
+  for(i = 0; i < json.length; i++){
+      if(json[i].userid === user){
+          received = json[i].shared[0].received;
+          sent = json[i].shared[0].sent;
+      }
+  }
+  
+  for(j = 0; j < json.length;j++){
+    for(k = 0; k < sent.length;k++){
+      if(json[j].userid === sent[k]){
+        sentCals.push(json[j].first_name + " " + json[j].last_name)
+      }
+    }
+  }  
+  
+  for(l = 0; l < json.length;l++){
+    for(m = 0; m < received.length;m++){
+      if(json[l].userid === received[m]){
+        receivedCals.push(json[l].first_name + " " + json[l].last_name)
+      }
+    }
+  }  
+  
+  var cals = {};
+  cals.received = receivedCals;
+  cals.sent = sentCals;
+  console.log(receivedCals);
+  console.log(sentCals);
+  return cals;
+}
