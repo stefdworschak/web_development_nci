@@ -12,7 +12,6 @@
               <xs:element type="xs:byte" name="who"/>
               <xs:element type="xs:string" name="full_name"/>
               <xs:element type="xs:string" name="where"/>
-              <xs:element type="xs:string" name="email"/>
               <xs:element name="coords">
                 <xs:complexType>
                   <xs:sequence>

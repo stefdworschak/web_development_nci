@@ -125,8 +125,7 @@
         <who>1</who>
         <full_name>Stefan Dworschak</full_name>
         <where>Trinity College, Dublin</where>
-        <email>asd@asd.com</email>
-        <coords>
+               <coords>
             <lat>53.3437935</lat>
             <lng>-6.254571599999999</lng>
         </coords>
