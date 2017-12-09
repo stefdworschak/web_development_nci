@@ -79,19 +79,6 @@
         </coords>
     </appointment>
     <appointment>
-        <id>8</id>
-        <date>2017-11-30</date>
-        <time>20:00</time>
-        <what>Event</what>
-        <who>2</who>
-        <full_name>Mark Gaskin</full_name>
-        <where>Irish Life, abbey street, dublin</where>
-        <coords>
-            <lat>53.3494981</lat>
-            <lng>-6.2547172</lng>
-        </coords>
-    </appointment>
-    <appointment>
         <id>9</id>
         <date>2018-01-12</date>
         <time>21:30</time>
@@ -125,7 +112,7 @@
         <who>1</who>
         <full_name>Stefan Dworschak</full_name>
         <where>Trinity College, Dublin</where>
-               <coords>
+        <coords>
             <lat>53.3437935</lat>
             <lng>-6.254571599999999</lng>
         </coords>

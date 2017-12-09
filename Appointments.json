@@ -79,19 +79,6 @@
             }
         },
         {
-            "id": 8,
-            "date": "2017-11-30",
-            "time": "20:00",
-            "what": "Event",
-            "who": 2,
-            "full_name": "Mark Gaskin",
-            "where": "Irish Life, abbey street, dublin",
-            "coords": {
-                "lat": 53.3494981,
-                "lng": -6.2547172
-            }
-        },
-        {
             "id": 9,
             "date": "2018-01-12",
             "time": "21:30",
