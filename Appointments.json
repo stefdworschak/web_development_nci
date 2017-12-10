@@ -103,8 +103,6 @@
                 "lat": 53.360712,
                 "lng": -6.2512089
             }
-<<<<<<< HEAD
-=======
         },
         {
             "id": 11,
@@ -144,7 +142,45 @@
                 "lat": 53.33020399999999,
                 "lng": -6.249093999999999
             }
->>>>>>> b23774bea206677802213ac9bfe45c1acb484c72
+        },
+        {
+            "id": 12,
+            "date": "2017-12-10",
+            "time": "23:59",
+            "what": "Deadline for project",
+            "who": 1,
+            "full_name": "Stefan Dworschak",
+            "where": "National College of Ireland, Dublin",
+            "coords": {
+                "lat": 53.34881739999999,
+                "lng": -6.2431793
+            }
+        },
+        {
+            "id": 13,
+            "date": "2017-12-22",
+            "time": "20:00",
+            "what": "Football Match",
+            "who": 1,
+            "full_name": "Stefan Dworschak",
+            "where": "The Woolshed, Dublin",
+            "coords": {
+                "lat": 53.350356,
+                "lng": -6.267389
+            }
+        },
+        {
+            "id": 14,
+            "date": "2017-12-29",
+            "time": "20:00",
+            "what": "Christmas Pary",
+            "who": 1,
+            "full_name": "Stefan Dworschak",
+            "where": "The Grand Social, Dublin",
+            "coords": {
+                "lat": 53.3469012,
+                "lng": -6.2634767
+            }
         }
     ]
 }

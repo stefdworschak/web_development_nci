@@ -46,9 +46,16 @@ module.exports = function(req, res) {
         return res.redirect('/');
     });
   }
-  // Call appendJSON function and pass in body of the current POST request
-  if(req.body.date.length > 0 && req.body.time.length > 0 && req.body.what.length > 0 && req.body.who.length > 0 && req.body.where.length > 0) {
-    appendJSON(req.body);
-  } else {console.log("Details missing: "+req.body.date.length+", "+req.body.time.length+", "+req.body.what.length +", "+req.body.who.length+", "+req.body.where.length+", "+req.body.coords.length);}
-  // Re-direct the browser back to the page, where the POST request came from
+  
+  if(!req.session.user) {
+    res.render('login');
+  } else {
+    // Call appendJSON function and pass in body of the current POST request
+    if(req.body.date.length > 0 && req.body.time.length > 0 && req.body.what.length > 0 && req.body.who.length > 0 && req.body.where.length > 0) {
+      appendJSON(req.body);
+    } else {
+      console.log("Details missing: "+req.body.date.length+", "+req.body.time.length+", "+req.body.what.length +", "+req.body.who.length+", "+req.body.where.length+", "+req.body.coords.length);
+    }
+    // Re-direct the browser back to the page, where the POST request came from
+  }
 }

@@ -25,7 +25,10 @@ module.exports = function(req,res){
     res.end(reStr);
     
   }
-
-  changePw(req.body);
   
+  if(!req.session.user) {
+    res.render('login');
+  } else {
+    changePw(req.body);
+  }
 }

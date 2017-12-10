@@ -28,6 +28,11 @@ module.exports = function(req,res){
     res.writeHead(200,{'Content-Type':'text/plain'});
     res.end(retStr);
   }
-   
-  deleteRecord(req.body.record_id);
+  
+  //Check if user is logged in
+  if(!req.session.user) {
+    res.render('login');
+  } else { 
+    deleteRecord(req.body.record_id);
+  }
 }

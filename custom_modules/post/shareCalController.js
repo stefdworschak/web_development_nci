@@ -48,6 +48,10 @@ module.exports = function(req,res){
     res.end(reStr);
     
   }
-  appendJSON(req.body);
   
+  if(!req.session.user) {
+    res.render('login');
+  } else {
+    appendJSON(req.body);
+  }
 }

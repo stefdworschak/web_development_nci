@@ -104,8 +104,6 @@
             <lng>-6.2512089</lng>
         </coords>
     </appointment>
-<<<<<<< HEAD
-=======
     <appointment>
         <id>11</id>
         <date>2017-12-23</date>
@@ -145,5 +143,43 @@
             <lng>-6.249093999999999</lng>
         </coords>
     </appointment>
->>>>>>> b23774bea206677802213ac9bfe45c1acb484c72
+    <appointment>
+        <id>12</id>
+        <date>2017-12-10</date>
+        <time>23:59</time>
+        <what>Deadline for project</what>
+        <who>1</who>
+        <full_name>Stefan Dworschak</full_name>
+        <where>National College of Ireland, Dublin</where>
+        <coords>
+            <lat>53.34881739999999</lat>
+            <lng>-6.2431793</lng>
+        </coords>
+    </appointment>
+    <appointment>
+        <id>13</id>
+        <date>2017-12-22</date>
+        <time>20:00</time>
+        <what>Football Match</what>
+        <who>1</who>
+        <full_name>Stefan Dworschak</full_name>
+        <where>The Woolshed, Dublin</where>
+        <coords>
+            <lat>53.350356</lat>
+            <lng>-6.267389</lng>
+        </coords>
+    </appointment>
+    <appointment>
+        <id>14</id>
+        <date>2017-12-29</date>
+        <time>20:00</time>
+        <what>Christmas Pary</what>
+        <who>1</who>
+        <full_name>Stefan Dworschak</full_name>
+        <where>The Grand Social, Dublin</where>
+        <coords>
+            <lat>53.3469012</lat>
+            <lng>-6.2634767</lng>
+        </coords>
+    </appointment>
 </appointments>
