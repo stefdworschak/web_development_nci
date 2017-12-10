@@ -103,19 +103,6 @@
                 "lat": 53.360712,
                 "lng": -6.2512089
             }
-        },
-        {
-            "id": 11,
-            "date": "2017-12-23",
-            "time": "13:00",
-            "what": "Exam",
-            "who": 1,
-            "full_name": "Stefan Dworschak",
-            "where": "Trinity College, Dublin",
-            "coords": {
-                "lat": 53.3437935,
-                "lng": -6.254571599999999
-            }
         }
     ]
 }

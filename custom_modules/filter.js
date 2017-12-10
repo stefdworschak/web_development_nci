@@ -54,7 +54,5 @@ exports.filterUsr = function (jsonParsed, user_obj){
   var cals = {};
   cals.received = receivedCals;
   cals.sent = sentCals;
-  console.log(receivedCals);
-  console.log(sentCals);
   return cals;
 }

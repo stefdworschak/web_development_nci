@@ -12,7 +12,7 @@ var http = require('http'),
       key: 'AIzaSyBF2VwTjDiUFzvdA3IuQw_8H5JYq803bHs'
     }),
     session=require('express-session');
-    var x = require('libxmljs');
+    
 
 //https://www.npmjs.com/package/simple-encryptor
 // Specify a string key:
@@ -35,15 +35,7 @@ router.use(session({
     saveUninitialized: true
 }));
 
-router.get('/Test', function(req,res){
-var xsd = fs.readFileSync('Appointments.xsd', 'utf8')
-var xsdDoc = x.parseXmlString(xsd.toString());
-var xml0 = fs.readFileSync('Appointments.xml','utf8')
-var xmlDoc0 = x.parseXmlString(xml0);
-var result0 = xmlDoc0.validate(xsdDoc);
-console.log("result0:", result0);
-  res.end(result0.toString());
-})
+
 
 
 // GET request to dislay index.html located inside /views folder
@@ -53,7 +45,7 @@ router.get('/', _get.showIndex);
 router.post('/get/json', _get.jsonCtrl);
 router.get('/get/html', _get.xmlCtrl);
 router.get('/logout',_get.logoutCtrl);
-
+router.get('/Test', _get.xmlValidateCtrl);
 
 var _post = require('./custom_modules/post');
 
