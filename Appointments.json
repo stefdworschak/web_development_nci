@@ -103,6 +103,48 @@
                 "lat": 53.360712,
                 "lng": -6.2512089
             }
+<<<<<<< HEAD
+=======
+        },
+        {
+            "id": 11,
+            "date": "2017-12-23",
+            "time": "13:00",
+            "what": "Exam",
+            "who": 1,
+            "full_name": "Stefan Dworschak",
+            "where": "Trinity College, Dublin",
+            "coords": {
+                "lat": 53.3437935,
+                "lng": -6.254571599999999
+            }
+        },
+        {
+            "id": 10,
+            "date": "2017-12-16",
+            "time": "20:00",
+            "what": "Pints with the lads",
+            "who": 3,
+            "full_name": "Graham Farrell",
+            "where": "Harbour Bar Bray",
+            "coords": {
+                "lat": 53.207362,
+                "lng": -6.102274
+            }
+        },
+        {
+            "id": 11,
+            "date": "2017-12-09",
+            "time": "19:30",
+            "what": "Christmas Party",
+            "who": 3,
+            "full_name": "Graham Farrell",
+            "where": "Clayton Hotel Leeson Street",
+            "coords": {
+                "lat": 53.33020399999999,
+                "lng": -6.249093999999999
+            }
+>>>>>>> b23774bea206677802213ac9bfe45c1acb484c72
         }
     ]
 }

@@ -104,4 +104,46 @@
             <lng>-6.2512089</lng>
         </coords>
     </appointment>
+<<<<<<< HEAD
+=======
+    <appointment>
+        <id>11</id>
+        <date>2017-12-23</date>
+        <time>13:00</time>
+        <what>Exam</what>
+        <who>1</who>
+        <full_name>Stefan Dworschak</full_name>
+        <where>Trinity College, Dublin</where>
+        <coords>
+            <lat>53.3437935</lat>
+            <lng>-6.254571599999999</lng>
+        </coords>
+    </appointment>
+    <appointment>
+        <id>10</id>
+        <date>2017-12-16</date>
+        <time>20:00</time>
+        <what>Pints with the lads</what>
+        <who>3</who>
+        <full_name>Graham Farrell</full_name>
+        <where>Harbour Bar Bray</where>
+        <coords>
+            <lat>53.207362</lat>
+            <lng>-6.102274</lng>
+        </coords>
+    </appointment>
+    <appointment>
+        <id>11</id>
+        <date>2017-12-09</date>
+        <time>19:30</time>
+        <what>Christmas Party</what>
+        <who>3</who>
+        <full_name>Graham Farrell</full_name>
+        <where>Clayton Hotel Leeson Street</where>
+        <coords>
+            <lat>53.33020399999999</lat>
+            <lng>-6.249093999999999</lng>
+        </coords>
+    </appointment>
+>>>>>>> b23774bea206677802213ac9bfe45c1acb484c72
 </appointments>
